@@ -20,18 +20,15 @@
 
   <!-- Intro loader -->
   <div class="loader" aria-hidden="true">
-    <img src="assets/img/logo-white.png" alt="">
+    <span>Howell'n</span>
   </div>
 
   <header class="header">
-    <a class="header-logo" href="#top" aria-label="Howell'n Media, home">
-      <img src="assets/img/logo-white.png" alt="">
-      <span>Howell'n</span>
-    </a>
+    <a class="header-logo" href="#top" aria-label="Howell'n Media, home">Howell'n</a>
     <nav class="header-nav" aria-label="Main">
       <a href="#work">Work</a>
       <a href="#capabilities">Services</a>
-      <a href="#studio">Studio</a>
+      <a href="studio.html">Studio</a>
       <a href="https://www.instagram.com/howellnmedia/" target="_blank" rel="noopener">Instagram</a>
     </nav>
     <a class="header-contact copy-email" href="mailto:designs@howellnmedia.com" data-email="designs@howellnmedia.com">
@@ -44,21 +41,16 @@
 
     <!-- Hero -->
     <section class="hero">
+      <h1 class="hero-title">Bringing vision to fruition.<br><span>We shape the stories, spaces, and identities that move people.</span></h1>
       <div class="hero-media">
         <!-- Swap for a reel: <video src="assets/work/reel.mp4" autoplay muted loop playsinline></video> -->
-        <img class="hero-mark" src="assets/img/logo-white.png" alt="Howell'n Media mark">
+        <span class="hero-mark">Howell'n</span>
       </div>
-      <p class="statement">
-        Howell'n Media is a full-service creative agency bringing vision to fruition. We pair high-end visual storytelling with structured growth strategy for brands that want to look elevated and perform at scale. Recent projects include work for
-        <a href="#work">Night Owl</a>, <a href="#work">HOT KINI</a>, and <a href="#work">Rubrum</a>.
-      </p>
     </section>
 
     <!-- Selected work -->
     <section class="work" id="work">
       <div class="work-head">
-        <h1 class="work-title">Selected Work</h1>
-        <a class="work-all" href="#" data-filter="all">View all</a>
         <div class="filters">
           <h2 class="filter-title">Discipline</h2>
           <ul class="filter-list" id="filter-list"></ul>
@@ -77,31 +69,8 @@
     </section>
 
     <!-- Studio -->
-    <section class="studio" id="studio">
-      <h2 class="section-title">Our Studio</h2>
-      <div class="studio-grid">
-        <article class="studio-card">
-          <div class="studio-media tone-1"><span>Visual<br>Storytelling</span></div>
-          <h3>Visual Storytelling</h3>
-          <p>Live performance and campaign photography with a cinematic approach — movement, light, and crowd connection.</p>
-        </article>
-        <article class="studio-card">
-          <div class="studio-media tone-2"><span>Marketing<br>Positioning</span></div>
-          <h3>Marketing Positioning</h3>
-          <p>Strategy through a creative-director lens, blending story, visuals, and experience into one cohesive ecosystem.</p>
-        </article>
-        <article class="studio-card">
-          <div class="studio-media tone-3"><span>Editorial<br>Design</span></div>
-          <h3>Editorial Design</h3>
-          <p>Packaging, editorial layouts, and collector books — including a 300+ page book for Vintage Vault and Field of Memories.</p>
-        </article>
-        <article class="studio-card">
-          <div class="studio-media tone-4"><span>Social Media<br>Management</span></div>
-          <h3>Social Media Management</h3>
-          <p>Strategy, content planning, analytics, and fully custom branded systems. Nothing templated, nothing expected.</p>
-        </article>
-      </div>
-    </section>
+    <!-- Panels are built from window.STUDIO in projects.js -->
+    <div class="studio-stack" id="studio" data-studio-stack data-label="Our Studio"></div>
 
     <!-- Contact -->
     <section class="contact" id="contact">

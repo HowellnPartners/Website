@@ -28,6 +28,16 @@ Static site (HTML / CSS / JS, no build step), ready for GitHub Pages.
 Tags automatically build the filter list next to "Selected Work".
 Use `video: "assets/work/clip.mp4"` for a looping cover.
 
+## Project profiles
+
+Every project automatically gets its own page at `project.html?p=<id>`, and the cards on the home page link to it.
+The profile is built from that project's entry in `projects.js`: title + tagline, Client / Year / Role,
+a hero image, then a stack of **blocks** (full image, split, grid, carousel, big statement with Read More, text),
+an Overview, Team credits and Prev / Next links. The block types are documented at the top of `projects.js`.
+A project with no blocks yet shows the full layout as blank slots.
+
+Tip: keep each project's images in its own folder, e.g. `assets/work/night-owl/`.
+
 ## Preview locally
 
 ```bash
