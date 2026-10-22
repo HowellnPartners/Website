@@ -1,4 +1,4 @@
-# Howell'n Media — website
+# Howell'n — website
 
 Static site (HTML / CSS / JS, no build step), ready for GitHub Pages.
 

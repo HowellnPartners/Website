@@ -13,7 +13,7 @@
     return;
   }
 
-  document.title = `${p.title} — Howell'n Media`;
+  document.title = `${p.title} — Howell'n`;
 
   /* Used when a project has no blocks yet: shows the full layout as blank slots. */
   const DEFAULT_BLOCKS = [
@@ -116,7 +116,7 @@
 
     <section class="project-team reveal">
       <h2>Team</h2>
-      <dl>${(p.team && p.team.length ? p.team : [{ role: "Creative Direction, Strategy, Design", name: "Howell'n Media" }])
+      <dl>${(p.team && p.team.length ? p.team : [{ role: "Creative Direction, Strategy, Design", name: "Howell'n" }])
         .map((t) => `<div><dt>${esc(t.role)}:</dt><dd>${esc(t.name)}</dd></div>`).join("")}</dl>
     </section>
 
