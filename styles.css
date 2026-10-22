@@ -94,7 +94,9 @@ body.is-loading { overflow: hidden; }
 .header-nav { display: flex; gap: 1.1em; padding-top: 0.15em; }
 .header-nav a:hover, .header-contact:hover { opacity: 0.5; }
 
-.header-contact { justify-self: end; padding-top: 0.15em; }
+.header-right { justify-self: end; display: flex; gap: 1.1em; padding-top: 0.15em; }
+.header-right a:hover { opacity: 0.5; }
+.header-right a[aria-current="page"] { opacity: 0.5; }
 
 /* "Contact" → "Copied" swap */
 .copy-email { position: relative; display: inline-grid; }
