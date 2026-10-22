@@ -3,7 +3,6 @@
   const caps = window.CAPABILITIES || [];
   const grid = document.getElementById("work-grid");
   const filterList = document.getElementById("filter-list");
-  const capGrid = document.getElementById("cap-grid");
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   /* ---------- Work grid (home) ---------- */
@@ -53,26 +52,23 @@
     });
   }
 
-  /* ---------- Capabilities (home) ---------- */
-  if (capGrid) {
-    capGrid.innerHTML = caps.map((c) => `
-      <div class="cap reveal">
-        <h3>${esc(c.title)}</h3>
-        <ul>${c.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
-      </div>`).join("");
-  }
-
-  /* ---------- Studio stack (full-screen panels) ---------- */
-  const studio = window.STUDIO || [];
+  /* ---------- Panel stacks (full-screen panels that stack on scroll) ----------
+     data-studio-stack="studio"        -> window.STUDIO
+     data-studio-stack="capabilities"  -> window.CAPABILITIES (items become the detail line) */
   document.querySelectorAll("[data-studio-stack]").forEach((stack) => {
+    const source = stack.dataset.studioStack || "studio";
+    const list = (source === "capabilities" ? caps : window.STUDIO || []).map((s) => ({
+      ...s,
+      text: s.text || (s.items || []).join(" · ")
+    }));
     const label = stack.dataset.label || "Our Studio";
-    stack.innerHTML = studio.map((s, i) => `
-      <section class="ss-panel" id="studio-${i + 1}" style="z-index:${i + 1}">
+    stack.innerHTML = list.map((s, i) => `
+      <section class="ss-panel" id="${source}-${i + 1}" style="z-index:${i + 1}">
         ${s.image ? `<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy">` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
         <div class="ss-inner">
           <div class="ss-label">${esc(label)}</div>
           <ul class="ss-list">
-            ${studio.map((t, j) => `<li><a href="#studio-${j + 1}"${i === j ? ' class="is-active" aria-current="true"' : ""}>${esc(t.title)}</a></li>`).join("")}
+            ${list.map((t, j) => `<li><a href="#${source}-${j + 1}"${i === j ? ' class="is-active" aria-current="true"' : ""}>${esc(t.title)}</a></li>`).join("")}
           </ul>
           <div class="ss-detail">
             <p>${esc(s.text || "")}</p>

@@ -87,30 +87,40 @@ window.STUDIO = [
   }
 ];
 
-/* Capabilities — the "A Holistic Approach" section */
+/*
+  CAPABILITIES — the full-screen "Capabilities" (Services) panels on the home page.
+  image : background, e.g. "assets/services/branding.jpg" ("" shows a dark blank panel)
+  items : shown as the small line at the bottom of each panel
+*/
 window.CAPABILITIES = [
   {
     title: "Brand & Design",
+    image: "",
     items: ["Brand Identity & Logo", "Brand Kit Revamps", "Typography & Visual Systems", "Campaign Visual Rollouts", "Ad Creative", "Social Graphic Design"]
   },
   {
     title: "Digital & Web",
+    image: "",
     items: ["Custom Website Design", "Landing Pages", "UX/UI & Site Architecture", "E-Commerce", "CMS Setup", "SEO-Ready Builds"]
   },
   {
     title: "Strategy",
+    image: "",
     items: ["Brand Positioning & Voice", "Audience Mapping", "Content Pillars", "Platform Strategy", "Campaign Planning", "KPI Mapping"]
   },
   {
     title: "Social & Content",
+    image: "",
     items: ["Content Systems", "Recurring Content Shoots", "Video Scripting", "Short-Form Editing", "Trend-Aware Direction", "Batch Production"]
   },
   {
     title: "Marketing",
+    image: "",
     items: ["Social Media Management", "Content Calendars", "Strategic Copywriting", "Community Engagement", "Email & Funnels", "Launch Execution"]
   },
   {
     title: "Production",
+    image: "",
     items: ["Commercials & Branded Ads", "Vertical Content", "Music Videos", "Brand Story Films", "Photography", "Drone Footage"]
   }
 ];
