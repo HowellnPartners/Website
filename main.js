@@ -72,7 +72,7 @@
           </ul>
           <div class="ss-detail">
             <p>${esc(s.text || "")}</p>
-            ${s.link ? `<a class="ss-link" href="${esc(s.link)}">See project</a>` : ""}
+            ${s.link ? (/^https?:/.test(s.link) ? `<a class="ss-link" href="${esc(s.link)}" target="_blank" rel="noopener">Visit site</a>` : `<a class="ss-link" href="${esc(s.link)}">See project</a>`) : ""}
           </div>
         </div>
       </section>`).join("");
@@ -80,7 +80,9 @@
     // a panel with a link opens that project when you click anywhere on its image
     stack.addEventListener("click", (e) => {
       const panel = e.target.closest(".ss-panel[data-link]");
-      if (panel && !e.target.closest("a")) window.location.href = panel.dataset.link;
+      if (!panel || e.target.closest("a")) return;
+      if (/^https?:/.test(panel.dataset.link)) window.open(panel.dataset.link, "_blank", "noopener");
+      else window.location.href = panel.dataset.link;
     });
   });
 

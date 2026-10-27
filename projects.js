@@ -215,34 +215,40 @@ window.STUDIO = [
   image : background, e.g. "assets/services/branding.jpg" ("" shows a dark blank panel)
   video : optional muted clip that loops behind the panel (image is its poster); mobileVideo is the phone cut
   mobileImage : optional portrait version used on phones (768px wide and under)
-  link  : optional, e.g. "project.html?p=good-days" — clicking the panel opens it
+  link  : optional, e.g. "project.html?p=good-days" — clicking the panel opens it (a full https:// address opens in a new tab)
   items : shown as the small line at the bottom of each panel
 */
 window.CAPABILITIES = [
   {
     title: "Brand & Design",
     image: "assets/services/brand-design-good-days.jpg",
+    mobileImage: "assets/services/brand-design-good-days-mobile.jpg",
     link: "project.html?p=good-days",
     items: ["Brand Identity & Logo", "Brand Kit Revamps", "Typography & Visual Systems", "Campaign Visual Rollouts", "Ad Creative", "Social Graphic Design"]
   },
   {
     title: "Digital & Web",
     image: "assets/services/digital-web.jpg",
+    mobileImage: "assets/services/digital-web-mobile.jpg",
+    link: "https://uncensored-health.com/",
     items: ["Custom Website Design", "Landing Pages", "UX/UI & Site Architecture", "E-Commerce", "CMS Setup", "SEO-Ready Builds"]
   },
   {
     title: "Strategy",
     image: "assets/services/strategy.jpg",
+    mobileImage: "assets/services/strategy-mobile.jpg",
     items: ["Brand Positioning & Voice", "Audience Mapping", "Content Pillars", "Platform Strategy", "Campaign Planning", "KPI Mapping"]
   },
   {
     title: "Social & Content",
     image: "assets/services/social-content.jpg",
+    mobileImage: "assets/services/social-content-mobile.jpg",
     items: ["Content Systems", "Recurring Content Shoots", "Video Scripting", "Short-Form Editing", "Trend-Aware Direction", "Batch Production"]
   },
   {
     title: "Marketing",
     image: "assets/services/marketing.jpg",
+    mobileImage: "assets/services/marketing-mobile.jpg",
     items: ["Social Media Management", "Content Calendars", "Strategic Copywriting", "Community Engagement", "Email & Funnels", "Launch Execution"]
   },
   {
