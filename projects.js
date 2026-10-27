@@ -200,7 +200,7 @@ window.STUDIO = [
 window.CAPABILITIES = [
   {
     title: "Brand & Design",
-    image: "assets/services/brand-design.jpg",
+    image: "assets/services/brand-design-good-days.jpg",
     items: ["Brand Identity & Logo", "Brand Kit Revamps", "Typography & Visual Systems", "Campaign Visual Rollouts", "Ad Creative", "Social Graphic Design"]
   },
   {
