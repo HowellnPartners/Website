@@ -152,8 +152,6 @@ window.PROJECTS = [
         { name: "Oxblood", hex: "#4B2317", cmyk: "0 53 69 71", ref: "assets/work/blank/ref-oxblood.jpg" },
         { name: "Ink",     hex: "#261406", cmyk: "0 47 84 85", ref: "assets/work/blank/ref-ink.jpg" }
       ] },
-      { type: "lead", lead: "THE PALETTE", text: "stays in oxblood, bone, warm tan and near-black — salon colors without the gloss. Serif display against a plain grotesque keeps the voice close to a fashion house and far from a price list." },
-      { type: "lead", lead: "THE PROMISE", text: "is a space where craftsmanship, conversation, and quiet luxury come together to create hair that lives beautifully beyond the salon." },
       { type: "screens", items: ["assets/work/blank/screen-1.jpg", "assets/work/blank/screen-2.jpg", "assets/work/blank/screen-3.jpg"] }
     ]
   }
