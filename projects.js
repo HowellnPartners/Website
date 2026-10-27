@@ -158,7 +158,7 @@ window.PROJECTS = [
   {
     id: "good-days", title: "good days", tags: ["Branding", "App Design", "UX & Strategy"],
     summary: "Every good day, in one place.",
-    image: "assets/work/good-days/01-hero.jpg", ratio: "2400 / 1880",
+    image: "assets/work/good-days/hero.jpg", ratio: "2400 / 1880",
     tagline: "Every good day, in one place.",
     client: "good days, personal health tracker",
     year: "2026",
@@ -167,7 +167,7 @@ window.PROJECTS = [
     hideFromWork: true,
     layout: "case", hero: false, square: true,
     blocks: [
-      { type: "bleed", image: "assets/work/good-days/01-hero.jpg" },
+      { type: "bleed", image: "assets/work/good-days/hero.jpg" },
       { type: "image", image: "assets/work/good-days/02-app.jpg" },
       { type: "bleed", image: "assets/work/good-days/03-trail.jpg" },
       { type: "image", image: "assets/work/good-days/04-colours.jpg" },
