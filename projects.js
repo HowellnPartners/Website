@@ -55,8 +55,8 @@ window.PROJECTS = [
     tagline: "Built for the mile after.",
     client: "MADRUN, muscle cooling gel",
     year: "2023",
-    // Same layout as the MADRUN case on brookerogersdesign.com
-    layout: "case", hero: false,
+    // Same layout as the MADRUN case on brookerogersdesign.com, but square corners
+    layout: "case", hero: false, square: true,
     blocks: [
       { type: "bleed", image: "assets/work/madrun/01.jpg" },
       { type: "lead", lead: "MADRUN", text: "turns recovery into part of the performance. A high-impact identity designed to stand out in the gym, on the shelf, and everywhere in between." },
@@ -89,8 +89,8 @@ window.PROJECTS = [
     tagline: "Beyond the transaction.",
     client: "Premier Asset Partners, Lake Mary, FL",
     year: "2026",
-    // Same layout as the PAP case on brookerogersdesign.com
-    layout: "case", hero: false,
+    // Same layout as the PAP case on brookerogersdesign.com, but square corners
+    layout: "case", hero: false, square: true,
     blocks: [
       { type: "clip", video: "assets/work/pap/hero.mp4", poster: "assets/work/pap/poster.jpg", mark: "assets/work/pap/seal.svg", ratio: "1929 / 1187", markW: "28.8%" },
       { type: "image", image: "assets/work/pap/mark.jpg" },
