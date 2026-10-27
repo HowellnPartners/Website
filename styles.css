@@ -182,6 +182,11 @@ body.is-loading { overflow: hidden; }
   transition: transform 1.2s var(--ease);
 }
 .work-media:hover img, .work-media:hover video { transform: scale(1.025); }
+/* a logo held still over the cover (mark in projects.js) */
+.work-media img.work-mark, .work-media:hover img.work-mark {
+  position: absolute; left: 50%; top: 50%; width: auto; height: 58%;
+  transform: translate(-50%, -50%); pointer-events: none;
+}
 
 /* Blank slot — ready for artwork */
 .work-media.is-blank { background: var(--blank); }
@@ -398,7 +403,60 @@ body.is-loading { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .bo-note, .bo-note:hover { transition: none; transform: rotate(var(--r)); }
 }
+/* tinted clip with the mark held still over it */
+.cs-clip {
+  position: relative; width: 100%; aspect-ratio: 1929 / 1187;
+  overflow: hidden; border-radius: var(--cs-r);
+  margin-bottom: var(--cs-space); background: #161d11;
+}
+.cs-clip video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.cl-mark { position: absolute; left: 50%; top: 50%; width: 28.8%; transform: translate(-50%, -50%); display: block; z-index: 2; }
+
+/* slide: a row that never stops, and can be dragged */
+.cs-slide {
+  position: relative; overflow: hidden; margin-bottom: var(--cs-space);
+  cursor: grab; touch-action: pan-y;
+}
+.cs-slide.is-dragging { cursor: grabbing; }
+.sl-track {
+  display: flex; width: max-content;
+  animation: sl-run var(--sl-dur, 46s) linear infinite;
+  will-change: transform;
+}
+.sl-track img {
+  width: clamp(240px, 27vw, 340px); height: auto; display: block;
+  border-radius: var(--cs-r); margin-right: 14px;
+  user-select: none; -webkit-user-drag: none;
+}
+@keyframes sl-run { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+
+/* a wall of patterns, each cell mid-change */
+.cs-patterns {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.4vw, 22px); margin-bottom: var(--cs-space);
+}
+.pt-cell {
+  position: relative; aspect-ratio: var(--pt-ratio, 565.34 / 443.5);
+  border-radius: var(--cs-r); overflow: hidden; background: #1d2418;
+}
+.pt-cell img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block; opacity: 0;
+  animation-duration: var(--pt-dur, 13.2s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sl-track { animation: none; }
+  .cs-slide { overflow-x: auto; }
+  .pt-cell img { animation: none; }
+  .pt-cell img:first-child { opacity: 1; }
+}
+
 @media (max-width: 768px) {
+  .sl-track img { width: min(70vw, 290px); margin-right: 10px; }
+  .cs-patterns { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .project-blocks.is-case { --cs-space: clamp(30px, 7vw, 52px); --cs-r: 18px; --cs-gap: 8px; }
   .cs-statement { margin: 40px 0 46px; }
   .cs-pair { grid-template-columns: 1fr; }

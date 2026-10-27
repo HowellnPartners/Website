@@ -107,6 +107,29 @@
         </div>
       </div>`,
 
+    // a tinted clip with the mark held still on top
+    clip: (b) => `<div class="cs-clip"${b.ratio ? ` style="aspect-ratio:${esc(b.ratio)}"` : ""}>
+        <video autoplay loop muted playsinline preload="metadata"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>
+        ${b.mark ? `<img class="cl-mark" src="${esc(b.mark)}" alt="${esc(p.title)}"${b.markW ? ` style="width:${esc(b.markW)}"` : ""}>` : ""}
+      </div>`,
+
+    // a row that never stops and can be dragged; two identical halves shifted 50% loop seamlessly
+    slide: (b) => {
+      const one = (b.items || []).map((s) => `<img src="${esc(s)}" alt="${esc(p.title)} social post" loading="lazy" draggable="false">`).join("");
+      return `<div class="cs-slide" data-slide${b.dur ? ` style="--sl-dur:${esc(b.dur)}"` : ""}><div class="sl-track">${one}${one}</div></div>`;
+    },
+
+    // a grid where every cell cycles the same colourways, each starting on a different one
+    patterns: (b) => {
+      const items = b.items || [];
+      const n = items.length, each = b.each || 2.2;
+      const slot = 100 / n, fade = Math.min(2.4, slot * 0.22), kf = `cs-pat-${n}`;
+      return `<style>@keyframes ${kf}{0%{opacity:0}${fade.toFixed(3)}%{opacity:1}${(slot - fade).toFixed(3)}%{opacity:1}${slot.toFixed(3)}%{opacity:0}100%{opacity:0}}</style>
+        <div class="cs-patterns" style="--pt-dur:${(n * each).toFixed(2)}s${b.ratio ? `;--pt-ratio:${esc(b.ratio)}` : ""}">
+          ${items.map((_, cell) => `<div class="pt-cell">${items.map((src, i) => `<img src="${esc(src)}" alt="${i === 0 ? esc(p.title) + " pattern" : ""}"${i === 0 ? "" : ' aria-hidden="true"'} loading="lazy" style="animation-name:${kf};animation-delay:${(((i + cell) % n) * each).toFixed(2)}s">`).join("")}</div>`).join("")}
+        </div>`;
+    },
+
     pack: (b) => `<div class="cs-pack">
         <img class="pk-label" src="${esc(b.label)}" alt="${esc(p.title)} label artwork" loading="lazy">
         <div class="pk-bot">
@@ -137,10 +160,10 @@
 
     <div class="project-blocks${p.layout === "case" ? " is-case" : ""}">${blocks.map((b) => (render[b.type] || render.full)(b)).join("")}</div>
 
-    <section class="project-overview reveal">
+    ${p.layout === "case" && !(p.overview && p.overview.length) ? "" : `<section class="project-overview reveal">
       <h2 class="section-title">Overview</h2>
       <div class="project-overview-body">${overview.map((t) => `<p>${esc(t)}</p>`).join("")}</div>
-    </section>
+    </section>`}
 
     <section class="project-team reveal">
       <h2>Team</h2>
@@ -184,4 +207,42 @@
       if (n !== i) { i = n; cur.textContent = i + 1; }
     }, { passive: true });
   });
+
+  /* ---------- Slide rows: drag to scrub, then carry on from where you let go ---------- */
+  let drag = null;
+  const half = (track) => track.scrollWidth / 2;
+  const currentX = (track) => new DOMMatrixReadOnly(getComputedStyle(track).transform).m41;
+  root.addEventListener("pointerdown", (e) => {
+    const slide = e.target.closest("[data-slide]");
+    if (!slide) return;
+    const track = slide.querySelector(".sl-track");
+    const x = currentX(track);
+    track.style.animation = "none";
+    track.style.transform = `translate3d(${x}px,0,0)`;
+    drag = { slide, track, startX: e.clientX, baseX: x };
+    slide.classList.add("is-dragging");
+    slide.setPointerCapture(e.pointerId);
+  });
+  document.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    const h = half(drag.track);
+    let x = drag.baseX + e.clientX - drag.startX;
+    while (x > 0) x -= h; // keep inside one half so the seam never shows
+    while (x < -h) x += h;
+    drag.track.style.transform = `translate3d(${x}px,0,0)`;
+  });
+  const release = () => {
+    if (!drag) return;
+    const { track, slide } = drag;
+    const h = half(track);
+    const progress = h ? ((-currentX(track) % h) + h) % h / h : 0;
+    const dur = parseFloat(getComputedStyle(slide).getPropertyValue("--sl-dur")) || 46;
+    track.style.transform = "";
+    track.style.animation = "";
+    track.style.animationDelay = `${-progress * dur}s`;
+    slide.classList.remove("is-dragging");
+    drag = null;
+  };
+  document.addEventListener("pointerup", release);
+  document.addEventListener("pointercancel", release);
 })();

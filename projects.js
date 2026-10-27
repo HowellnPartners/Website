@@ -81,7 +81,30 @@ window.PROJECTS = [
     ],
     overview: ["MADRUN turns recovery into part of the performance. A high-impact identity designed to stand out in the gym, on the shelf, and everywhere in between."]
   },
-  { id: "project-02", title: "Project 02", tags: [], summary: "", image: "", ratio: "16 / 9" },
+  {
+    id: "pap", title: "Premier Asset Partners",
+    tags: ["Branding", "Strategy", "Social Media", "Website Design", "Marketing Collateral"],
+    summary: "Beyond the transaction.",
+    video: "assets/work/pap/hero.mp4", image: "assets/work/pap/poster.jpg", mark: "assets/work/pap/seal.svg", ratio: "1600 / 844",
+    tagline: "Beyond the transaction.",
+    client: "Premier Asset Partners, Lake Mary, FL",
+    year: "2026",
+    // Same layout as the PAP case on brookerogersdesign.com
+    layout: "case", hero: false,
+    blocks: [
+      { type: "clip", video: "assets/work/pap/hero.mp4", poster: "assets/work/pap/poster.jpg", mark: "assets/work/pap/seal.svg", ratio: "1929 / 1187", markW: "28.8%" },
+      { type: "image", image: "assets/work/pap/mark.jpg" },
+      { type: "bleed", image: "assets/work/pap/stationery.jpg" },
+      { type: "slide", dur: "64s", items: ["assets/work/pap/post-1.jpg", "assets/work/pap/post-2.jpg", "assets/work/pap/post-3.jpg", "assets/work/pap/post-4.jpg", "assets/work/pap/post-5.jpg", "assets/work/pap/post-6.jpg"] },
+      { type: "image", image: "assets/work/pap/logoband.jpg" },
+      { type: "bleed", image: "assets/work/pap/brochure.jpg" },
+      { type: "bleed", image: "assets/work/pap/merch.jpg" },
+      { type: "patterns", each: 2.2, ratio: "565.34 / 443.5", items: ["assets/work/pap/pattern-1.jpg", "assets/work/pap/pattern-2.jpg", "assets/work/pap/pattern-3.jpg", "assets/work/pap/pattern-4.jpg", "assets/work/pap/pattern-5.jpg", "assets/work/pap/pattern-6.jpg"] },
+      { type: "bleed", image: "assets/work/pap/skyline.jpg" },
+      { type: "image", image: "assets/work/pap/cards.jpg" },
+      { type: "image", image: "assets/work/pap/closing.jpg" }
+    ]
+  },
   { id: "project-03", title: "Project 03", tags: [], summary: "", image: "", ratio: "16 / 9" },
   { id: "project-04", title: "Project 04", tags: [], summary: "", image: "", ratio: "16 / 9" }
 ];

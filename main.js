@@ -19,11 +19,11 @@
       }
       return `
         <article class="work-card reveal" id="work-${esc(p.id)}" data-tags="${esc(p.tags.join("|"))}">
-          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}">${media}</a>
+          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}">${media}${p.mark ? `<img class="work-mark" src="${esc(p.mark)}" alt="" aria-hidden="true">` : ""}</a>
           <div class="work-info">
             <h3 class="work-card-title"><a href="${url}">${esc(p.title)}</a></h3>
             ${p.summary ? `<p class="work-card-summary">${esc(p.summary)}</p>` : ""}
-            <ul class="work-tags">${p.tags.map((t) => `<li><button type="button" data-filter="${esc(t)}">${esc(t)}</button></li>`).join("")}</ul>
+            <ul class="work-tags">${p.tags.map((t) => `<li>${filterList ? `<button type="button" data-filter="${esc(t)}">${esc(t)}</button>` : esc(t)}</li>`).join("")}</ul>
           </div>
         </article>`;
     }).join("");

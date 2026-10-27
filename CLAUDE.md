@@ -14,7 +14,7 @@ Live address: https://howellnpartners.github.io/Website/ (GitHub Pages, no custo
 - Large headline leading is 0.95 (`--lh-display`), loosened from 0.85 on purpose.
 
 ## Site map
-- `index.html` (home): loader, header (Work, Services, Instagram / Studio, Contact), hero, Selected Work grid with Discipline filters, Capabilities panels, Get in touch, footer.
+- `index.html` (home): loader, header (Work, Services, Instagram / Studio, Contact), hero, Selected Work grid, Capabilities panels, Get in touch, footer.
 - `project.html?p=<id>`: project profile built from that project's entry in `projects.js` (title, tagline, Client / Year / Role, hero, blocks, Overview, Team, Prev / Next).
 - `studio.html`: intro paragraph, Information (Contact, Capabilities, Industries, Platforms, Clients), Approach.
 
