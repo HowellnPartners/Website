@@ -163,7 +163,7 @@
 
     ${p.hero === false ? "" : `<div class="project-hero">${media(p.hero || { image: p.image, video: p.video }, (p.hero && p.hero.ratio) || "16 / 9", "Hero")}</div>`}
 
-    <div class="project-blocks${p.layout === "case" ? " is-case" : ""}">${blocks.map((b) => (render[b.type] || render.full)(b)).join("")}</div>
+    <div class="project-blocks${p.layout === "case" ? " is-case" : ""}${p.square ? " is-square" : ""}">${blocks.map((b) => (render[b.type] || render.full)(b)).join("")}</div>
 
     ${p.layout === "case" && !(p.overview && p.overview.length) ? "" : `<section class="project-overview reveal">
       <h2 class="section-title">Overview</h2>

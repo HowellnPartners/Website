@@ -409,6 +409,9 @@ body.is-loading { overflow: hidden; }
   padding: clamp(22px, 3vw, 54px); margin-bottom: var(--cs-space);
 }
 .cs-red video, .cs-red img { width: 100%; height: auto; display: block; border-radius: 8px; }
+/* square: true in projects.js — no rounded corners anywhere in the case */
+.project-blocks.is-case.is-square { --cs-r: 0; }
+.is-square .cs-red video, .is-square .cs-red img { border-radius: 0; }
 
 /* tinted clip with the mark held still over it */
 .cs-clip {

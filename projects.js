@@ -112,8 +112,8 @@ window.PROJECTS = [
     tagline: "Made to be shared.",
     client: "Sincerely YAS",
     year: "2026",
-    // Same layout as the Sincerely YAS case on brookerogersdesign.com
-    layout: "case", hero: false,
+    // Same layout as the Sincerely YAS case on brookerogersdesign.com, but square corners
+    layout: "case", hero: false, square: true,
     blocks: [
       { type: "image", image: "assets/work/yas/01.jpg" },
       { type: "lead", lead: "SINCERELY YAS", text: "is a brand built around the table — the round of drinks, the plate in the middle, the people leaning in. The site had to feel like being invited rather than sold to." },
