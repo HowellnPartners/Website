@@ -129,7 +129,7 @@ window.PROJECTS = [
   {
     id: "blank", title: "BLANK", tags: ["Branding", "Positioning", "Web Design"],
     summary: "The art of looking effortless.",
-    image: "assets/work/blank/01.jpg", ratio: "2880 / 1621",
+    image: "assets/work/blank/cover.jpg", ratio: "2880 / 1621",
     tagline: "The art of looking effortless.",
     client: "BLANK, hair studio, 421 S Washington St.",
     year: "2026",
