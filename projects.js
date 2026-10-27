@@ -152,7 +152,7 @@ window.PROJECTS = [
         { name: "Oxblood", hex: "#4B2317", cmyk: "0 53 69 71", ref: "assets/work/blank/ref-oxblood.jpg" },
         { name: "Ink",     hex: "#261406", cmyk: "0 47 84 85", ref: "assets/work/blank/ref-ink.jpg" }
       ] },
-      { type: "screens", items: ["assets/work/blank/screen-1.jpg", "assets/work/blank/screen-2.jpg", "assets/work/blank/screen-3.jpg"] }
+      { type: "image", image: "assets/work/blank/stories.jpg" }
     ]
   }
 ];
