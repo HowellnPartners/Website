@@ -20,13 +20,13 @@ Live address: https://howellnpartners.github.io/Website/ (GitHub Pages, no custo
 
 ## Where to edit
 Almost everything lives in `projects.js`:
-- `window.PROJECTS`: MADRUN, Premier Asset Partners, Sincerely YAS, then one blank slot (`project-04`). Block types are documented at the top of the file. Projects copied from Brooke's portfolio (brookerogersdesign.com, local `../../Portfolio Site/site/cases.js`) use `layout: "case"`, `hero: false` and the portfolio block types (bleed, image, pair, trio, lead, red, clip, slide, patterns, motion, pack) so they match the portfolio; the top title and Client / Year / Role stay in this site's layout.
+- `window.PROJECTS`: MADRUN, Premier Asset Partners, Sincerely YAS, BLANK. Block types are documented at the top of the file. Projects copied from Brooke's portfolio (brookerogersdesign.com, local `../../Portfolio Site/site/cases.js`) use `layout: "case"`, `hero: false` and the portfolio block types (bleed, image, pair, trio, lead, red, panel, screens, swatches, clip, slide, patterns, motion, pack) so they match the portfolio; the top title and Client / Year / Role stay in this site's layout. All four use `square: true` (no rounded corners).
 - `window.CAPABILITIES`: the 6 Capabilities panels. Backgrounds are 1920x1080 exports of the frames in the "Website" Figma file (Homepage page), saved in `assets/services/`.
 - `window.STUDIO`: the 4 Our Studio panels. Not shown anywhere since Our Studio was removed from the home page; kept in case it comes back.
 Images go in `assets/work/` (one folder per project), `assets/services/`, `assets/studio/`. Styles in `styles.css`, behavior in `main.js` and `project.js`.
 
 ## Next up
-- Fill project 4.
+- Add more projects as Brooke sends them (copy a block in `projects.js`).
 - Move howellnmedia.com over to this site.
 
 ## Working on it

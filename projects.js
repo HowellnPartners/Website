@@ -126,7 +126,37 @@ window.PROJECTS = [
       { type: "trio", items: ["assets/work/yas/06.jpg", "assets/work/yas/07.jpg", "assets/work/yas/08.jpg"] }
     ]
   },
-  { id: "project-04", title: "Project 04", tags: [], summary: "", image: "", ratio: "16 / 9" }
+  {
+    id: "blank", title: "BLANK", tags: ["Branding", "Positioning", "Web Design"],
+    summary: "The art of looking effortless.",
+    image: "assets/work/blank/01.jpg", ratio: "2880 / 1621",
+    tagline: "The art of looking effortless.",
+    client: "BLANK, hair studio, 421 S Washington St.",
+    year: "2025",
+    // Same layout as the BLANK case on brookerogersdesign.com, but square corners
+    layout: "case", hero: false, square: true,
+    blocks: [
+      { type: "bleed", image: "assets/work/blank/01.jpg" },
+      { type: "lead", lead: "BLANK", text: "is a hair studio built on a premise that runs against everything salon branding usually does — the most considered work is the work you never notice. Positioning, identity and site were built together so the restraint reads as intent rather than absence." },
+      { type: "panel", image: "assets/work/blank/02.jpg", bg: "#D9D7CE" },
+      { type: "lead", lead: "THE MARK", text: "mirrors its own K. Set as BLA / NK across two lines, the reversed letter reads as a flaw until you see it twice — then it reads as a signature. The BK monogram and star carry it down to stamp scale." },
+      { type: "panel", image: "assets/work/blank/03.jpg", bg: "#251406" },
+      { type: "image", image: "assets/work/blank/04.jpg" },
+      { type: "trio", items: ["assets/work/blank/05.jpg", "assets/work/blank/06.jpg", "assets/work/blank/07.jpg"] },
+      { type: "lead", lead: "THE POSITIONING", text: "is rooted in The Ruler archetype — a quiet confidence that values excellence, intention and timeless sophistication over fleeting trends. The line the whole system hangs on: the art of looking effortless." },
+      { type: "image", image: "assets/work/blank/08.jpg" },
+      { type: "image", image: "assets/work/blank/09.jpg" },
+      { type: "swatches", items: [
+        { name: "Bone",    hex: "#F1EDEC", cmyk: "0 2 2 5",    ref: "assets/work/blank/ref-bone.jpg" },
+        { name: "Sand",    hex: "#C7B79D", cmyk: "0 8 21 22",  ref: "assets/work/blank/ref-sand.jpg" },
+        { name: "Oxblood", hex: "#4B2317", cmyk: "0 53 69 71", ref: "assets/work/blank/ref-oxblood.jpg" },
+        { name: "Ink",     hex: "#261406", cmyk: "0 47 84 85", ref: "assets/work/blank/ref-ink.jpg" }
+      ] },
+      { type: "lead", lead: "THE PALETTE", text: "stays in oxblood, bone, warm tan and near-black — salon colors without the gloss. Serif display against a plain grotesque keeps the voice close to a fashion house and far from a price list." },
+      { type: "lead", lead: "THE PROMISE", text: "is a space where craftsmanship, conversation, and quiet luxury come together to create hair that lives beautifully beyond the salon." },
+      { type: "screens", items: ["assets/work/blank/screen-1.jpg", "assets/work/blank/screen-2.jpg", "assets/work/blank/screen-3.jpg"] }
+    ]
+  }
 ];
 
 /*

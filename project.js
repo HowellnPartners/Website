@@ -107,6 +107,31 @@
         </div>
       </div>`,
 
+    // colour panel with the piece inset
+    panel: (b) => `<div class="cs-panel" style="background:${esc(b.bg || "#3F1516")}"><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></div>`,
+
+    // a row of screens on a panel; any number, wraps
+    screens: (b) => `<div class="cs-screens" style="--screens-n:${(b.items || []).length}${b.bg ? `;--screens-bg:${esc(b.bg)}` : ""}">${(b.items || []).map((s) => `<img src="${esc(s)}" alt="${esc(p.title)} screen" loading="lazy">`).join("")}</div>`,
+
+    // colour swatches; hover unfolds shades/tints and the breakdown
+    swatches: (b) => `<div class="cs-swatches">${(b.items || []).map((c) => {
+      const h = c.hex.replace("#", "");
+      const rgb = [0, 2, 4].map((i) => parseInt(h.substr(i, 2), 16));
+      const lum = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+      const mix = (t) => `rgb(${rgb.map((v) => Math.round(v + ((t < 0 ? 0 : 255) - v) * Math.abs(t))).join(",")})`;
+      const steps = [-0.45, -0.22, 0, 0.22, 0.45].map((t, i) => `<i style="background:${t === 0 ? esc(c.hex) : mix(t)};transition-delay:${i * 45}ms"></i>`).join("");
+      return `<div class="cs-swatch${lum > 0.55 ? " on-light" : ""}" style="background:${esc(c.hex)}" tabindex="0">
+          <div class="sw-steps">${steps}</div>
+          ${c.ref ? `<span class="sw-ref"><img src="${esc(c.ref)}" alt="${esc(c.name)} reference" loading="lazy"></span>` : ""}
+          <div class="sw-info">
+            <span class="sw-name">${esc(c.name)}</span>
+            <span class="sw-val">${esc(c.hex.toUpperCase())}</span>
+            <span class="sw-val">RGB ${rgb.join(" ")}</span>
+            ${c.cmyk ? `<span class="sw-val">CMYK ${esc(c.cmyk)}</span>` : ""}
+          </div>
+        </div>`;
+    }).join("")}</div>`,
+
     // screens framed in a brand-colour panel (red by default); video or image
     red: (b) => `<div class="cs-red"${b.bg ? ` style="background:${esc(b.bg)}"` : ""}>${b.video
         ? `<video autoplay loop muted playsinline preload="metadata"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>`

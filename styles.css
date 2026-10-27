@@ -409,9 +409,64 @@ body.is-loading { overflow: hidden; }
   padding: clamp(22px, 3vw, 54px); margin-bottom: var(--cs-space);
 }
 .cs-red video, .cs-red img { width: 100%; height: auto; display: block; border-radius: 8px; }
+/* colour panel with the piece inset */
+.cs-panel {
+  border-radius: var(--cs-r); margin-bottom: var(--cs-space);
+  padding: clamp(28px, 4.5vw, 90px) clamp(24px, 6vw, 180px);
+}
+.cs-panel img { width: 100%; height: auto; display: block; border-radius: 4px; }
+
+/* a row of screens on a panel; width follows the count so N fit across */
+.cs-screens {
+  background: var(--screens-bg, #261406); border-radius: var(--cs-r);
+  margin-bottom: var(--cs-space);
+  padding: clamp(36px, 5vw, 96px) clamp(20px, 4vw, 64px);
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start;
+  --sgap: clamp(18px, 3vw, 64px); gap: var(--sgap);
+}
+.cs-screens img {
+  width: min(300px, calc((100% - (var(--screens-n, 3) - 1) * var(--sgap)) / var(--screens-n, 3)));
+  height: auto; display: block;
+}
+
+/* colour swatches — hover unfolds tints/shades + the breakdown */
+.cs-swatches {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.6vw, 28px); margin: 0 auto var(--cs-space);
+}
+.cs-swatch {
+  position: relative; aspect-ratio: 1 / 1.7; overflow: hidden;
+  border-radius: var(--cs-r); outline: none;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.cs-swatch:hover, .cs-swatch:focus-visible { transform: translateY(-6px); }
+.sw-ref {
+  position: absolute; top: 13px; left: 13px; z-index: 3;
+  width: 36%; aspect-ratio: 1; border-radius: 6px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+.sw-ref img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sw-steps { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.sw-steps i { flex: 1; display: block; opacity: 0; transition: opacity 0.45s ease; }
+.cs-swatch:hover .sw-steps i, .cs-swatch:focus-visible .sw-steps i { opacity: 1; }
+.sw-info {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 16px 14px 15px;
+  display: flex; flex-direction: column; gap: 3px;
+  color: #FBF5EB; line-height: 1.2; letter-spacing: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease; transition-delay: 0.12s;
+}
+.cs-swatch.on-light .sw-info { color: #111110; background: linear-gradient(to top, rgba(255, 255, 255, 0.6), transparent); }
+.cs-swatch:hover .sw-info, .cs-swatch:focus-visible .sw-info { opacity: 1; transform: none; }
+.sw-name { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 2px; }
+.sw-val { font-size: 11px; letter-spacing: 0.06em; opacity: 0.85; }
+
 /* square: true in projects.js — no rounded corners anywhere in the case */
 .project-blocks.is-case.is-square { --cs-r: 0; }
-.is-square .cs-red video, .is-square .cs-red img { border-radius: 0; }
+.is-square .cs-red video, .is-square .cs-red img,
+.is-square .cs-panel img, .is-square .sw-ref { border-radius: 0; }
 
 /* tinted clip with the mark held still over it */
 .cs-clip {
@@ -466,6 +521,11 @@ body.is-loading { overflow: hidden; }
 
 @media (max-width: 768px) {
   .sl-track img { width: min(70vw, 290px); margin-right: 10px; }
+  .cs-panel { padding: 20px 16px; }
+  .cs-screens { padding: 26px 16px; gap: 14px; }
+  .cs-screens img { width: calc(50% - 7px); }
+  .cs-swatches { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .sw-info, .sw-steps i { opacity: 1; transform: none; } /* no hover on touch */
   .cs-patterns { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .project-blocks.is-case { --cs-space: clamp(30px, 7vw, 52px); --cs-r: 18px; --cs-gap: 8px; }
   .cs-statement { margin: 40px 0 46px; }
