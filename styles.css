@@ -237,6 +237,7 @@ body.is-loading { overflow: hidden; }
   background: #111;
 }
 .ss-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ss-panel[data-link] { cursor: pointer; }
 .ss-panel::after { /* keeps white type readable on any photo */
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0) 60%);

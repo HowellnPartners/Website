@@ -63,7 +63,7 @@
     }));
     const label = stack.dataset.label || "Our Studio";
     stack.innerHTML = list.map((s, i) => `
-      <section class="ss-panel" id="${source}-${i + 1}" style="z-index:${i + 1}">
+      <section class="ss-panel" id="${source}-${i + 1}" style="z-index:${i + 1}"${s.link ? ` data-link="${esc(s.link)}"` : ""}>
         ${s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
         <div class="ss-inner">
           <div class="ss-label">${esc(label)}</div>
@@ -76,6 +76,12 @@
           </div>
         </div>
       </section>`).join("");
+
+    // a panel with a link opens that project when you click anywhere on its image
+    stack.addEventListener("click", (e) => {
+      const panel = e.target.closest(".ss-panel[data-link]");
+      if (panel && !e.target.closest("a")) window.location.href = panel.dataset.link;
+    });
   });
 
   /* ---------- Copy email ---------- */

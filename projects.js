@@ -153,6 +153,24 @@ window.PROJECTS = [
       ] },
       { type: "image", image: "assets/work/blank/stories.jpg" }
     ]
+  },
+  {
+    id: "good-days", title: "good days", tags: ["Branding", "App Design", "UX & Strategy"],
+    summary: "Every good day, in one place.",
+    image: "assets/work/good-days/01-hero.jpg", ratio: "2400 / 1880",
+    tagline: "Every good day, in one place.",
+    client: "good days, personal health tracker",
+    year: "2026",
+    // Built from the "Good Days" frame in the Website Figma file, cut into its sections
+    layout: "case", hero: false, square: true,
+    blocks: [
+      { type: "bleed", image: "assets/work/good-days/01-hero.jpg" },
+      { type: "image", image: "assets/work/good-days/02-app.jpg" },
+      { type: "bleed", image: "assets/work/good-days/03-trail.jpg" },
+      { type: "image", image: "assets/work/good-days/04-colours.jpg" },
+      { type: "bleed", image: "assets/work/good-days/05-screens.jpg" },
+      { type: "image", image: "assets/work/good-days/06-merch.jpg" }
+    ]
   }
 ];
 
@@ -193,12 +211,14 @@ window.STUDIO = [
   CAPABILITIES — the full-screen "Capabilities" (Services) panels on the home page.
   image : background, e.g. "assets/services/branding.jpg" ("" shows a dark blank panel)
   mobileImage : optional portrait version used on phones (768px wide and under)
+  link  : optional, e.g. "project.html?p=good-days" — clicking the panel opens it
   items : shown as the small line at the bottom of each panel
 */
 window.CAPABILITIES = [
   {
     title: "Brand & Design",
     image: "assets/services/brand-design-good-days.jpg",
+    link: "project.html?p=good-days",
     items: ["Brand Identity & Logo", "Brand Kit Revamps", "Typography & Visual Systems", "Campaign Visual Rollouts", "Ad Creative", "Social Graphic Design"]
   },
   {
