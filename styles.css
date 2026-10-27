@@ -243,6 +243,11 @@ body.is-loading { overflow: hidden; }
   background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(0,0,0,0) 60%);
   pointer-events: none;
 }
+.ss-panel.is-shaded::after { /* stronger shade for bright photos (shade: true in projects.js) */
+  background:
+    linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0) 30%),
+    linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.12) 80%);
+}
 .ss-blank { display: grid; place-items: end end; }
 .ss-blank span { font-size: var(--fs-sm); color: rgba(255,255,255,0.35); padding: var(--gutter); }
 .ss-tone-1 { background: radial-gradient(circle at 70% 40%, #3b3b3b, #0c0c0c 70%); }

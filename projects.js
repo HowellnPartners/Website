@@ -216,6 +216,7 @@ window.STUDIO = [
   video : optional muted clip that loops behind the panel (image is its poster); mobileVideo is the phone cut
   mobileImage : optional portrait version used on phones (768px wide and under)
   link  : optional, e.g. "project.html?p=good-days" — clicking the panel opens it (a full https:// address opens in a new tab)
+  shade : optional, true darkens the photo more so white text reads on bright images
   items : shown as the small line at the bottom of each panel
 */
 window.CAPABILITIES = [
@@ -237,6 +238,7 @@ window.CAPABILITIES = [
     title: "Strategy",
     image: "assets/services/strategy.jpg",
     mobileImage: "assets/services/strategy-mobile.jpg",
+    shade: true,
     items: ["Brand Positioning & Voice", "Audience Mapping", "Content Pillars", "Platform Strategy", "Campaign Planning", "KPI Mapping"]
   },
   {
