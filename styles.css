@@ -108,7 +108,7 @@ body.is-loading { overflow: hidden; }
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: calc(var(--gutter) * 2 + var(--fs-logo)) var(--gutter) 0;
+  padding: calc(var(--gutter) * 2 + var(--fs-logo) + clamp(32px, 5vw, 80px)) var(--gutter) 0;
 }
 .hero-title {
   font-size: var(--fs-lg);
