@@ -170,32 +170,32 @@ window.STUDIO = [
 window.CAPABILITIES = [
   {
     title: "Brand & Design",
-    image: "",
+    image: "assets/services/brand-design.jpg",
     items: ["Brand Identity & Logo", "Brand Kit Revamps", "Typography & Visual Systems", "Campaign Visual Rollouts", "Ad Creative", "Social Graphic Design"]
   },
   {
     title: "Digital & Web",
-    image: "",
+    image: "assets/services/digital-web.jpg",
     items: ["Custom Website Design", "Landing Pages", "UX/UI & Site Architecture", "E-Commerce", "CMS Setup", "SEO-Ready Builds"]
   },
   {
     title: "Strategy",
-    image: "",
+    image: "assets/services/strategy.jpg",
     items: ["Brand Positioning & Voice", "Audience Mapping", "Content Pillars", "Platform Strategy", "Campaign Planning", "KPI Mapping"]
   },
   {
     title: "Social & Content",
-    image: "",
+    image: "assets/services/social-content.jpg",
     items: ["Content Systems", "Recurring Content Shoots", "Video Scripting", "Short-Form Editing", "Trend-Aware Direction", "Batch Production"]
   },
   {
     title: "Marketing",
-    image: "",
+    image: "assets/services/marketing.jpg",
     items: ["Social Media Management", "Content Calendars", "Strategic Copywriting", "Community Engagement", "Email & Funnels", "Launch Execution"]
   },
   {
     title: "Production",
-    image: "",
+    image: "assets/services/production.jpg",
     items: ["Commercials & Branded Ads", "Vertical Content", "Music Videos", "Brand Story Films", "Photography", "Drone Footage"]
   }
 ];
