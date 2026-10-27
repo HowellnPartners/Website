@@ -64,7 +64,7 @@
     const label = stack.dataset.label || "Our Studio";
     stack.innerHTML = list.map((s, i) => `
       <section class="ss-panel" id="${source}-${i + 1}" style="z-index:${i + 1}"${s.link ? ` data-link="${esc(s.link)}"` : ""}>
-        ${s.video ? `<video class="ss-bg" src="${esc(s.video)}"${s.image ? ` poster="${esc(s.image)}"` : ""} autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>` : s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
+        ${s.video ? `<video class="ss-bg"${s.image ? ` poster="${esc(s.image)}"` : ""} autoplay muted loop playsinline preload="metadata" aria-hidden="true">${s.mobileVideo ? `<source src="${esc(s.mobileVideo)}" type="video/mp4" media="(max-width: 768px)">` : ""}<source src="${esc(s.video)}" type="video/mp4"></video>` : s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
         <div class="ss-inner">
           <div class="ss-label">${esc(label)}</div>
           <ul class="ss-list">
