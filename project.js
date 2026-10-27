@@ -173,8 +173,11 @@
   const blocks = p.blocks && p.blocks.length ? p.blocks : DEFAULT_BLOCKS;
   const roles = p.tags && p.tags.length ? p.tags : ["Role"];
   const overview = p.overview && p.overview.length ? p.overview : ["Project overview goes here: the challenge, the approach, and the result."];
-  const prev = projects[(index - 1 + projects.length) % projects.length];
-  const next = projects[(index + 1) % projects.length];
+  // Prev / Next only step through projects shown in the work list
+  const listed = projects.filter((x) => !x.hideFromWork);
+  const at = listed.indexOf(p);
+  const prev = listed[at < 0 ? listed.length - 1 : (at - 1 + listed.length) % listed.length];
+  const next = listed[at < 0 ? 0 : (at + 1) % listed.length];
 
   root.innerHTML = `
     <header class="project-head">

@@ -8,6 +8,7 @@
   image  : cover image, e.g. "assets/work/night-owl.jpg" ("" shows a blank slot)
   video  : optional looping cover video, e.g. "assets/work/night-owl.mp4"
   ratio  : cover aspect ratio, e.g. "16 / 9" or "4 / 5"
+  hideFromWork : true keeps a project off the home grid (its page still works, e.g. from a Capabilities link)
 
   To add a project: copy a block, change the fields, drop the image in assets/work/.
 
@@ -161,7 +162,9 @@ window.PROJECTS = [
     tagline: "Every good day, in one place.",
     client: "good days, personal health tracker",
     year: "2026",
-    // Built from the "Good Days" frame in the Website Figma file, cut into its sections
+    // Built from the "Good Days" frame in the Website Figma file, cut into its sections.
+    // Not in the work list; opened from the Brand & Design panel in Capabilities.
+    hideFromWork: true,
     layout: "case", hero: false, square: true,
     blocks: [
       { type: "bleed", image: "assets/work/good-days/01-hero.jpg" },

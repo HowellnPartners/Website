@@ -7,7 +7,7 @@
 
   /* ---------- Work grid (home) ---------- */
   if (grid) {
-    grid.innerHTML = projects.map((p) => {
+    grid.innerHTML = projects.filter((p) => !p.hideFromWork).map((p) => {
       const url = `project.html?p=${encodeURIComponent(p.id)}`;
       let media;
       if (p.video) {
