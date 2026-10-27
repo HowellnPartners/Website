@@ -325,6 +325,90 @@ body.is-loading { overflow: hidden; }
 
 /* blocks */
 .project-blocks { display: grid; gap: clamp(8px, 0.7vw, 10px); }
+
+/* Case-study layout (layout: "case" in projects.js) — carried over from the
+   portfolio case pages so a project reads the same in both places. */
+.project-blocks.is-case {
+  display: block; margin-top: clamp(24px, 3vw, 40px);
+  --cs-space: clamp(44px, 5.5vw, 88px); --cs-r: 24px; --cs-gap: 12px; --cs-fg: #111110;
+}
+.cs-statement {
+  font-size: clamp(20px, 2.5vw, 34px); font-weight: 400;
+  line-height: 1.32; letter-spacing: -0.015em;
+  max-width: 52ch; margin: 64px 0 72px; color: rgba(17, 17, 16, 0.78);
+}
+.cs-statement .lead { font-weight: 700; color: var(--cs-fg); }
+.cs-bleed { margin: 0 calc(var(--gutter) * -1) var(--cs-space); }
+.cs-bleed img { width: 100%; height: auto; display: block; }
+.cs-full { margin: 0 0 var(--cs-space); }
+.cs-full img { width: 100%; height: auto; display: block; border-radius: var(--cs-r); }
+.cs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--cs-gap); margin-bottom: var(--cs-space); }
+.cs-pair figure { margin: 0; }
+.cs-pair img { width: 100%; height: auto; display: block; border-radius: var(--cs-r); }
+.cs-trio {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3.4vw, 64px);
+  max-width: 78%; margin: 0 auto var(--cs-space);
+}
+.cs-trio img { width: 100%; height: auto; display: block; border-radius: var(--cs-r); }
+
+/* motion panel — a portrait clip rotated to fill a 16:9 frame, line set over it.
+   The video's width is the frame's height (9/16 of its width); rotating 90deg
+   swaps the two, so it lands exactly with no crop. */
+.cs-motion {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  overflow: hidden; border-radius: var(--cs-r);
+  background: #000; margin-bottom: var(--cs-space);
+}
+.cs-motion video {
+  position: absolute; left: 50%; top: 50%;
+  width: calc(100% * 9 / 16); height: auto;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.cs-motion .mo-copy {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(18px, 3vw, 44px); text-align: center; padding: 6%;
+  pointer-events: none;
+}
+.cs-motion .mo-line { font-size: clamp(26px, 5vw, 72px); line-height: 1.05; color: #70CDDF; margin: 0; }
+.cs-motion img.mo-line { width: min(62%, 620px); height: auto; display: block; }
+.cs-motion .mo-mark { width: clamp(110px, 13vw, 230px); height: auto; display: block; }
+
+/* packaging — label flat on the left, bottle with live Square Peg callouts on
+   the right. The right column keeps the Figma frame's 937x713 ratio so the
+   callout percentages stay valid at any width. */
+.cs-pack { position: relative; width: 100%; aspect-ratio: 1920 / 860; margin-bottom: var(--cs-space); }
+.pk-label { position: absolute; left: 7.08%; top: 0; width: 31.41%; height: auto; }
+.pk-bot {
+  position: absolute; left: 45.47%; top: 8.55%; width: 48.80%;
+  aspect-ratio: 936.97 / 713.2; container-type: inline-size;
+}
+.bo-head { position: absolute; left: 6.70%; top: 0; width: 79.82%; height: auto; }
+.bo-bottle { position: absolute; left: 0; top: 34.30%; width: 100%; height: auto; }
+.bo-note {
+  position: absolute; left: var(--x); top: var(--y); width: var(--w);
+  font-family: "Square Peg", var(--font); font-weight: 400;
+  font-size: 5.4cqw; line-height: 1.1; letter-spacing: 0; color: var(--cs-fg);
+  white-space: nowrap; transform-origin: left center;
+  transform: rotate(var(--r)) translate(0, 0);
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.bo-note:hover { transform: rotate(var(--r)) translate(0, -6px) scale(1.04); }
+@media (prefers-reduced-motion: reduce) {
+  .bo-note, .bo-note:hover { transition: none; transform: rotate(var(--r)); }
+}
+@media (max-width: 768px) {
+  .project-blocks.is-case { --cs-space: clamp(30px, 7vw, 52px); --cs-r: 18px; --cs-gap: 8px; }
+  .cs-statement { margin: 40px 0 46px; }
+  .cs-pair { grid-template-columns: 1fr; }
+  .cs-trio { grid-template-columns: 1fr; gap: 18px; max-width: 100%; }
+  .cs-motion { aspect-ratio: 4 / 5; }
+  .cs-motion video { width: calc(100% * 5 / 4); }
+  .cs-pack { aspect-ratio: auto; display: flex; flex-direction: column; gap: 26px; }
+  .pk-label { position: static; width: 72%; margin: 0 auto; }
+  .pk-bot { position: relative; left: auto; top: auto; width: 100%; }
+}
 .pb + .pb { margin-top: clamp(0px, 0vw, 0px); }
 .pb-split-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(8px, 0.7vw, 10px); align-items: start; }
 .pb-split.wide-left .pb-split-row { grid-template-columns: 2fr 1fr; }

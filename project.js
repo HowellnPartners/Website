@@ -86,7 +86,35 @@
     text: (b) => `<section class="pb pb-text reveal">
         ${b.heading ? `<h2>${esc(b.heading)}</h2>` : "<span></span>"}
         <div>${(b.paragraphs || []).map((t) => `<p>${esc(t)}</p>`).join("")}</div>
-      </section>`
+      </section>`,
+
+    /* Case-study blocks, matching the portfolio case layout (see projects.js) */
+    bleed: (b) => `<figure class="cs-bleed"><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></figure>`,
+
+    image: (b) => `<figure class="cs-full"><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></figure>`,
+
+    pair: (b) => `<div class="cs-pair">${(b.items || []).map((s) => `<figure><img src="${esc(s)}" alt="${esc(p.title)}" loading="lazy"></figure>`).join("")}</div>`,
+
+    trio: (b) => `<div class="cs-trio">${(b.items || []).map((s) => `<img src="${esc(s)}" alt="${esc(p.title)}" loading="lazy">`).join("")}</div>`,
+
+    lead: (b) => `<p class="cs-statement"><span class="lead">${esc(b.lead)}</span> ${esc(b.text)}</p>`,
+
+    motion: (b) => `<div class="cs-motion">
+        <video autoplay loop muted playsinline preload="metadata"><source src="${esc(b.video)}" type="video/mp4"></video>
+        <div class="mo-copy">
+          ${b.lineArt ? `<img class="mo-line" src="${esc(b.lineArt)}" alt="${esc(b.line || "")}">` : b.line ? `<p class="mo-line">${esc(b.line)}</p>` : ""}
+          ${b.mark ? `<img class="mo-mark" src="${esc(b.mark)}" alt="" loading="lazy">` : ""}
+        </div>
+      </div>`,
+
+    pack: (b) => `<div class="cs-pack">
+        <img class="pk-label" src="${esc(b.label)}" alt="${esc(p.title)} label artwork" loading="lazy">
+        <div class="pk-bot">
+          <img class="bo-head" src="${esc(b.head)}" alt="${esc(b.heading || "")}">
+          <img class="bo-bottle" src="${esc(b.bottle)}" alt="${esc(p.title)} bottle" loading="lazy">
+          ${(b.notes || []).map((n) => `<span class="bo-note" style="--x:${esc(n.x)};--y:${esc(n.y)};--w:${esc(n.w)};--r:${esc(n.r)}">${esc(n.t)}</span>`).join("")}
+        </div>
+      </div>`
   };
 
   const blocks = p.blocks && p.blocks.length ? p.blocks : DEFAULT_BLOCKS;
@@ -105,9 +133,9 @@
       </dl>
     </header>
 
-    <div class="project-hero">${media(p.hero || { image: p.image, video: p.video }, (p.hero && p.hero.ratio) || "16 / 9", "Hero")}</div>
+    ${p.hero === false ? "" : `<div class="project-hero">${media(p.hero || { image: p.image, video: p.video }, (p.hero && p.hero.ratio) || "16 / 9", "Hero")}</div>`}
 
-    <div class="project-blocks">${blocks.map((b) => (render[b.type] || render.full)(b)).join("")}</div>
+    <div class="project-blocks${p.layout === "case" ? " is-case" : ""}">${blocks.map((b) => (render[b.type] || render.full)(b)).join("")}</div>
 
     <section class="project-overview reveal">
       <h2 class="section-title">Overview</h2>

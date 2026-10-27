@@ -1,7 +1,7 @@
 # Howell'n website
 
 Plain static site (HTML / CSS / JS), no build tools. GitHub: `HowellnPartners/Website` (public), branch `main`, SSH remote `git@github-howelln:HowellnPartners/Website.git`.
-Live address: not confirmed yet (no CNAME in the repo; check GitHub Pages settings).
+Live address: https://howellnpartners.github.io/Website/ (GitHub Pages, no custom domain yet). Pages caches for 10 minutes, so hard-refresh (Cmd + Shift + R) to see a fresh push.
 
 ## Design direction
 - Home, project and studio pages: modeled on Mouthwash.

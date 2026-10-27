@@ -48,7 +48,39 @@
   }
 */
 window.PROJECTS = [
-  { id: "project-01", title: "Project 01", tags: [], summary: "", image: "", ratio: "16 / 9" },
+  {
+    id: "madrun", title: "MADRUN", tags: ["Product Design", "Photography"],
+    summary: "Built for the mile after.",
+    image: "assets/work/madrun/cover.jpg", ratio: "2200 / 1160",
+    tagline: "Built for the mile after.",
+    client: "MADRUN, muscle cooling gel",
+    year: "2023",
+    // Same layout as the MADRUN case on brookerogersdesign.com
+    layout: "case", hero: false,
+    blocks: [
+      { type: "bleed", image: "assets/work/madrun/01.jpg" },
+      { type: "lead", lead: "MADRUN", text: "turns recovery into part of the performance. A high-impact identity designed to stand out in the gym, on the shelf, and everywhere in between." },
+      { type: "image", image: "assets/work/madrun/02.jpg" },
+      { type: "pair", items: ["assets/work/madrun/03.jpg", "assets/work/madrun/04.jpg"] },
+      { type: "image", image: "assets/work/madrun/05.jpg" },
+      { type: "trio", items: ["assets/work/madrun/06.jpg", "assets/work/madrun/07.jpg", "assets/work/madrun/08.jpg"] },
+      { type: "motion", video: "assets/work/madrun/motion.mp4", line: "made for the miles", lineArt: "assets/work/madrun/line.svg", mark: "assets/work/madrun/oval.png" },
+      { type: "pack",
+        heading: "a cooling botanical formula made with:",
+        label: "assets/work/madrun/label.jpg",
+        head: "assets/work/madrun/botanical-head.svg",
+        bottle: "assets/work/madrun/bottle.jpg",
+        notes: [
+          { t: "peppermint + eucalyptus",         x: "0%",     y: "18.07%", w: "37.44%", r: "-5.87deg" },
+          { t: "arnica flower",                   x: "45.81%", y: "15.50%", w: "21.82%", r: "4.62deg" },
+          { t: "menthol + camphor",               x: "70.14%", y: "11.85%", w: "30.64%", r: "5.77deg" },
+          { t: "aloe vera",                       x: "3.30%",  y: "82.79%", w: "14.28%", r: "-3.22deg" },
+          { t: "turmeric + neem",                 x: "25.40%", y: "81.82%", w: "26.01%", r: "13.96deg" },
+          { t: "botanical + essential oil blend", x: "53.89%", y: "84.90%", w: "46.11%", r: "-0.38deg" }
+        ] }
+    ],
+    overview: ["MADRUN turns recovery into part of the performance. A high-impact identity designed to stand out in the gym, on the shelf, and everywhere in between."]
+  },
   { id: "project-02", title: "Project 02", tags: [], summary: "", image: "", ratio: "16 / 9" },
   { id: "project-03", title: "Project 03", tags: [], summary: "", image: "", ratio: "16 / 9" },
   { id: "project-04", title: "Project 04", tags: [], summary: "", image: "", ratio: "16 / 9" }
