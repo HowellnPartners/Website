@@ -5,7 +5,7 @@ Live address: not confirmed yet (no CNAME in the repo; check GitHub Pages settin
 
 ## Design direction
 - Home, project and studio pages: modeled on Mouthwash.
-- Full-screen panels (Capabilities, Our Studio): modeled on Mutual Friends.
+- Full-screen panels (Capabilities): modeled on Mutual Friends.
 - Font: Inter Tight (Google Fonts, weights 400 and 500).
 
 ## Decisions not to undo
@@ -14,7 +14,7 @@ Live address: not confirmed yet (no CNAME in the repo; check GitHub Pages settin
 - Large headline leading is 0.95 (`--lh-display`), loosened from 0.85 on purpose.
 
 ## Site map
-- `index.html` (home): loader, header (Work, Services, Instagram / Studio, Contact), hero, Selected Work grid with Discipline filters, Capabilities panels, Our Studio panels, Get in touch, footer.
+- `index.html` (home): loader, header (Work, Services, Instagram / Studio, Contact), hero, Selected Work grid with Discipline filters, Capabilities panels, Get in touch, footer.
 - `project.html?p=<id>`: project profile built from that project's entry in `projects.js` (title, tagline, Client / Year / Role, hero, blocks, Overview, Team, Prev / Next).
 - `studio.html`: intro paragraph, Information (Contact, Capabilities, Industries, Platforms, Clients), Approach.
 
@@ -22,13 +22,12 @@ Live address: not confirmed yet (no CNAME in the repo; check GitHub Pages settin
 Almost everything lives in `projects.js`:
 - `window.PROJECTS`: the 4 blank slots (`project-01` to `project-04`). Block types are documented at the top of the file.
 - `window.CAPABILITIES`: the 6 Capabilities panels (images still blank).
-- `window.STUDIO`: the 4 Our Studio panels (images still blank).
+- `window.STUDIO`: the 4 Our Studio panels. Not shown anywhere since Our Studio was removed from the home page; kept in case it comes back.
 Images go in `assets/work/` (one folder per project), `assets/services/`, `assets/studio/`. Styles in `styles.css`, behavior in `main.js` and `project.js`.
 
 ## Next up
 - Fill the 4 project slots from Brooke's Figma files.
-- Panel photos for Capabilities and Our Studio, and the hero reel (`assets/work/reel.mp4`, see the comment in `index.html`).
-- Decide whether to drop Our Studio from the home page.
+- Panel photos for Capabilities, and the hero reel (`assets/work/reel.mp4`, see the comment in `index.html`).
 - Move howellnmedia.com over to this site.
 
 ## Working on it
