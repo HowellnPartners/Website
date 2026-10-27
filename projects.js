@@ -105,7 +105,27 @@ window.PROJECTS = [
       { type: "image", image: "assets/work/pap/closing.jpg" }
     ]
   },
-  { id: "project-03", title: "Project 03", tags: [], summary: "", image: "", ratio: "16 / 9" },
+  {
+    id: "sincerely-yas", title: "Sincerely YAS", tags: ["Web Design", "Development", "Shopify"],
+    summary: "Made to be shared.",
+    image: "assets/work/yas/01.jpg", ratio: "1800 / 1200",
+    tagline: "Made to be shared.",
+    client: "Sincerely YAS",
+    year: "2026",
+    // Same layout as the Sincerely YAS case on brookerogersdesign.com
+    layout: "case", hero: false,
+    blocks: [
+      { type: "image", image: "assets/work/yas/01.jpg" },
+      { type: "lead", lead: "SINCERELY YAS", text: "is a brand built around the table — the round of drinks, the plate in the middle, the people leaning in. The site had to feel like being invited rather than sold to." },
+      { type: "red", video: "assets/work/yas/homepage.mp4", poster: "assets/work/yas/poster.jpg" },
+      { type: "lead", lead: "DESIGNED AND BUILT", text: "end to end on Shopify — custom coded rather than themed, so every section behaves the way it was drawn instead of the way a template allows." },
+      { type: "image", image: "assets/work/yas/02.jpg" },
+      { type: "pair", items: ["assets/work/yas/03.jpg", "assets/work/yas/04.jpg"] },
+      { type: "red", image: "assets/work/yas/05.jpg" },
+      { type: "lead", lead: "THE PRODUCT PAGES", text: "carry the same warmth as the photography — generous imagery, a clear path to checkout, and a layout that holds up whether there are three products or thirty." },
+      { type: "trio", items: ["assets/work/yas/06.jpg", "assets/work/yas/07.jpg", "assets/work/yas/08.jpg"] }
+    ]
+  },
   { id: "project-04", title: "Project 04", tags: [], summary: "", image: "", ratio: "16 / 9" }
 ];
 

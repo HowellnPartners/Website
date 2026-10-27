@@ -20,18 +20,19 @@ Live address: https://howellnpartners.github.io/Website/ (GitHub Pages, no custo
 
 ## Where to edit
 Almost everything lives in `projects.js`:
-- `window.PROJECTS`: the 4 blank slots (`project-01` to `project-04`). Block types are documented at the top of the file.
+- `window.PROJECTS`: MADRUN, Premier Asset Partners, Sincerely YAS, then one blank slot (`project-04`). Block types are documented at the top of the file. Projects copied from Brooke's portfolio (brookerogersdesign.com, local `../../Portfolio Site/site/cases.js`) use `layout: "case"`, `hero: false` and the portfolio block types (bleed, image, pair, trio, lead, red, clip, slide, patterns, motion, pack) so they match the portfolio; the top title and Client / Year / Role stay in this site's layout.
 - `window.CAPABILITIES`: the 6 Capabilities panels (images still blank).
 - `window.STUDIO`: the 4 Our Studio panels. Not shown anywhere since Our Studio was removed from the home page; kept in case it comes back.
 Images go in `assets/work/` (one folder per project), `assets/services/`, `assets/studio/`. Styles in `styles.css`, behavior in `main.js` and `project.js`.
 
 ## Next up
-- Fill the 4 project slots from Brooke's Figma files.
-- Panel photos for Capabilities, and the hero reel (`assets/work/reel.mp4`, see the comment in `index.html`).
+- Fill project 4.
+- Panel photos for Capabilities.
 - Move howellnmedia.com over to this site.
 
 ## Working on it
 - Preview: `python3 -m http.server 8000`, then open http://localhost:8000.
 - Show changes in the browser before pushing; push to `main` to publish.
+- After changing CSS or JS, bump the `?v=N` on the `styles.css` / `*.js` links in all three HTML files, or browsers keep the old copy.
 - The repo is public: no passwords, keys or private client info. Public contact email only (designs@howellnmedia.com).
 - The older folder `../site` is a separate, earlier build with no GitHub remote. Don't edit it for this site.

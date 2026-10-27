@@ -403,6 +403,13 @@ body.is-loading { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .bo-note, .bo-note:hover { transition: none; transform: rotate(var(--r)); }
 }
+/* red panel — screens framed in brand red */
+.cs-red {
+  background: #D8232A; border-radius: var(--cs-r);
+  padding: clamp(22px, 3vw, 54px); margin-bottom: var(--cs-space);
+}
+.cs-red video, .cs-red img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
 /* tinted clip with the mark held still over it */
 .cs-clip {
   position: relative; width: 100%; aspect-ratio: 1929 / 1187;

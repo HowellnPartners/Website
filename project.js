@@ -107,6 +107,11 @@
         </div>
       </div>`,
 
+    // screens framed in a brand-colour panel (red by default); video or image
+    red: (b) => `<div class="cs-red"${b.bg ? ` style="background:${esc(b.bg)}"` : ""}>${b.video
+        ? `<video autoplay loop muted playsinline preload="metadata"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>`
+        : `<img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy">`}</div>`,
+
     // a tinted clip with the mark held still on top
     clip: (b) => `<div class="cs-clip"${b.ratio ? ` style="aspect-ratio:${esc(b.ratio)}"` : ""}>
         <video autoplay loop muted playsinline preload="metadata"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>
