@@ -99,7 +99,7 @@
   /* ---------- Reveal on scroll ---------- */
   const io = "IntersectionObserver" in window && new IntersectionObserver((entries) => {
     entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
-  }, { rootMargin: "0px 0px -8% 0px" });
+  }, { rootMargin: "0px 0px 0px 0px" });
   document.querySelectorAll(".reveal").forEach((el) => io ? io.observe(el) : el.classList.add("is-in"));
 
   /* ---------- Footer wordmark: fit to width ---------- */
@@ -119,11 +119,10 @@
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
-  /* ---------- Loader (home) ---------- */
+  /* ---------- Loader (home) ----------
+     A short beat for the wordmark, then out of the way. It doesn't wait for
+     window "load": that waits on the reel and every image, which took ~3s live. */
   if (document.body.classList.contains("is-loading")) {
-    window.addEventListener("load", () => {
-      setTimeout(() => document.body.classList.remove("is-loading"), 900);
-    });
-    setTimeout(() => document.body.classList.remove("is-loading"), 3000); // safety
+    setTimeout(() => document.body.classList.remove("is-loading"), 700);
   }
 })();
