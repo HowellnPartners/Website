@@ -213,6 +213,7 @@ window.STUDIO = [
 /*
   CAPABILITIES — the full-screen "Capabilities" (Services) panels on the home page.
   image : background, e.g. "assets/services/branding.jpg" ("" shows a dark blank panel)
+  video : optional muted clip that loops behind the panel (image is its poster)
   mobileImage : optional portrait version used on phones (768px wide and under)
   link  : optional, e.g. "project.html?p=good-days" — clicking the panel opens it
   items : shown as the small line at the bottom of each panel
@@ -246,7 +247,8 @@ window.CAPABILITIES = [
   },
   {
     title: "Production",
-    image: "assets/services/production.jpg",
+    image: "assets/services/production-poster.jpg",
+    video: "assets/services/production.mp4",
     items: ["Commercials & Branded Ads", "Vertical Content", "Music Videos", "Brand Story Films", "Photography", "Drone Footage"]
   }
 ];
