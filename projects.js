@@ -132,7 +132,7 @@ window.PROJECTS = [
     image: "assets/work/blank/01.jpg", ratio: "2880 / 1621",
     tagline: "The art of looking effortless.",
     client: "BLANK, hair studio, 421 S Washington St.",
-    year: "2025",
+    year: "2026",
     // Same layout as the BLANK case on brookerogersdesign.com, but square corners
     layout: "case", hero: false, square: true,
     blocks: [
@@ -195,6 +195,7 @@ window.STUDIO = [
 /*
   CAPABILITIES — the full-screen "Capabilities" (Services) panels on the home page.
   image : background, e.g. "assets/services/branding.jpg" ("" shows a dark blank panel)
+  mobileImage : optional portrait version used on phones (768px wide and under)
   items : shown as the small line at the bottom of each panel
 */
 window.CAPABILITIES = [

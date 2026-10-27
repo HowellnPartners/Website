@@ -64,7 +64,7 @@
     const label = stack.dataset.label || "Our Studio";
     stack.innerHTML = list.map((s, i) => `
       <section class="ss-panel" id="${source}-${i + 1}" style="z-index:${i + 1}">
-        ${s.image ? `<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy">` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
+        ${s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
         <div class="ss-inner">
           <div class="ss-label">${esc(label)}</div>
           <ul class="ss-list">
