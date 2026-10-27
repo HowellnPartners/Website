@@ -143,7 +143,6 @@ window.PROJECTS = [
       { type: "panel", image: "assets/work/blank/03.jpg", bg: "#251406" },
       { type: "image", image: "assets/work/blank/04.jpg" },
       { type: "trio", items: ["assets/work/blank/05.jpg", "assets/work/blank/06.jpg", "assets/work/blank/07.jpg"] },
-      { type: "lead", lead: "THE POSITIONING", text: "is rooted in The Ruler archetype — a quiet confidence that values excellence, intention and timeless sophistication over fleeting trends. The line the whole system hangs on: the art of looking effortless." },
       { type: "image", image: "assets/work/blank/08.jpg" },
       { type: "image", image: "assets/work/blank/09.jpg" },
       { type: "swatches", items: [
