@@ -252,17 +252,23 @@ body.is-loading { overflow: hidden; }
     linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0) 30%),
     linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.12) 80%);
 }
-/* Round project badge that follows the mouse (hover in projects.js) */
+/* Round project badge + "See work" that follow the mouse (hover in projects.js) */
 .ss-cursor {
   position: fixed; left: 0; top: 0; z-index: 2;
-  width: clamp(170px, 14vw, 240px); aspect-ratio: 1; border-radius: 50%; object-fit: cover;
-  transform: translate(calc(var(--mx, 50vw) - 50%), calc(var(--my, 50vh) - 50%));
+  width: clamp(170px, 14vw, 240px);
+  display: none; flex-direction: column; align-items: center; gap: 12px;
+  transform: translate(calc(var(--mx, 50vw) - 50%), calc(var(--my, 50vh) - clamp(170px, 14vw, 240px) / 2));
   scale: 0.6; opacity: 0; pointer-events: none;
+  transform-origin: 50% calc(clamp(170px, 14vw, 240px) / 2);
   transition: opacity 0.3s ease, scale 0.4s var(--ease);
-  display: none;
+}
+.ss-cursor img { width: 100%; aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
+.ss-cursor span {
+  font-size: var(--fs-base); font-weight: 500; letter-spacing: -0.02em; white-space: nowrap;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.35);
 }
 @media (hover: hover) and (pointer: fine) {
-  .ss-cursor { display: block; }
+  .ss-cursor { display: flex; }
   .ss-panel:hover .ss-cursor { opacity: 1; scale: 1; }
   .ss-panel:has(a:hover) .ss-cursor { opacity: 0; }
 }
@@ -295,6 +301,18 @@ body.is-loading { overflow: hidden; }
 }
 .ss-detail p { max-width: 30em; }
 .ss-link { white-space: nowrap; border-bottom: 1px solid currentColor; }
+.ss-link-mob { display: none; }
+/* Phones and touch screens: no mouse badge, so "See work" is a solid button above the services line */
+@media (max-width: 768px), (hover: none) {
+  .ss-detail { flex-direction: column-reverse; align-items: flex-start; gap: 14px; }
+  .ss-link {
+    border: 0; background: #fff; color: #111;
+    padding: 12px 22px; border-radius: 999px;
+    font-size: var(--fs-base); font-weight: 500; letter-spacing: -0.02em;
+  }
+  .ss-link-desk { display: none; }
+  .ss-link-mob { display: inline; }
+}
 
 /* ---------- Contact ---------- */
 .contact {

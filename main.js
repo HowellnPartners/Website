@@ -65,7 +65,7 @@
     stack.innerHTML = list.map((s, i) => `
       <section class="ss-panel${s.shade ? " is-shaded" : ""}" id="${source}-${i + 1}" style="z-index:${i + 1}"${s.link ? ` data-link="${esc(s.link)}"` : ""}>
         ${s.video ? `<video class="ss-bg"${s.image ? ` poster="${esc(s.image)}"` : ""} autoplay muted loop playsinline preload="metadata" aria-hidden="true">${s.mobileVideo ? `<source src="${esc(s.mobileVideo)}" type="video/mp4" media="(max-width: 768px)">` : ""}<source src="${esc(s.video)}" type="video/mp4"></video>` : s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
-        ${s.hover && s.link ? `<img class="ss-cursor" src="${esc(s.hover)}" alt="" aria-hidden="true">` : ""}
+        ${s.hover && s.link ? `<div class="ss-cursor" aria-hidden="true"><img src="${esc(s.hover)}" alt=""><span>See work</span></div>` : ""}
         <div class="ss-inner">
           <div class="ss-label">${esc(label)}</div>
           <ul class="ss-list">
@@ -73,7 +73,7 @@
           </ul>
           <div class="ss-detail">
             <p>${esc(s.text || "")}</p>
-            ${s.link ? (/^https?:/.test(s.link) ? `<a class="ss-link" href="${esc(s.link)}" target="_blank" rel="noopener">Visit site</a>` : `<a class="ss-link" href="${esc(s.link)}">See project</a>`) : ""}
+            ${s.link ? `<a class="ss-link" href="${esc(s.link)}"${/^https?:/.test(s.link) ? ' target="_blank" rel="noopener"' : ""}><span class="ss-link-desk">${/^https?:/.test(s.link) ? "Visit site" : "See project"}</span><span class="ss-link-mob">See work</span></a>` : ""}
           </div>
         </div>
       </section>`).join("");
