@@ -362,6 +362,7 @@ body.is-loading { overflow: hidden; }
 }
 .project-meta dt { color: var(--muted-2); }
 .project-meta dd { margin: 0; }
+@media (min-width: 769px) { .project-meta { font-size: clamp(16px, 1.15vw, 18px); line-height: 1.25; } } /* same as Studio Information */
 
 .project-hero { margin-top: clamp(24px, 3vw, 40px); }
 
@@ -713,7 +714,7 @@ body.is-loading { overflow: hidden; }
 .st-block li, .st-block dd { color: var(--muted-2); }
 .st-block dt { font-weight: 500; }
 .st-block dd { margin: 0 0 12px; }
-@media (min-width: 769px) { .st-block { font-size: clamp(15px, 1.15vw, 18px); line-height: 1.25; } }
+@media (min-width: 769px) { .st-block { font-size: clamp(16px, 1.15vw, 18px); line-height: 1.25; } }
 .st-block a:hover { color: var(--fg); }
 
 /* Approach */
