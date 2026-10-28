@@ -106,7 +106,7 @@ window.PROJECTS = [
     blocks: [
       { type: "bleed", image: "assets/work/madrun/01.jpg" },
       { type: "lead", lead: "MADRUN", text: "turns recovery into part of the performance. A high-impact identity designed to stand out in the gym, on the shelf, and everywhere in between." },
-      { type: "image", image: "assets/work/madrun/02.jpg" },
+      { type: "image", image: "assets/work/madrun/02.jpg?v=2" },
       { type: "pair", items: ["assets/work/madrun/03.jpg", "assets/work/madrun/04.jpg"] },
       { type: "image", image: "assets/work/madrun/05.jpg" },
       { type: "trio", items: ["assets/work/madrun/06.jpg", "assets/work/madrun/07.jpg", "assets/work/madrun/08.jpg"] },
