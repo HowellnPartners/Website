@@ -1,7 +1,7 @@
 # Howell'n website
 
 Plain static site (HTML / CSS / JS), no build tools. GitHub: `HowellnPartners/Website` (public), branch `main`, SSH remote `git@github-howelln:HowellnPartners/Website.git`.
-Live address: https://howellnpartners.github.io/Website/ (GitHub Pages, no custom domain yet). Pages caches for 10 minutes, so hard-refresh (Cmd + Shift + R) to see a fresh push.
+Live address: https://howelln.com (GitHub Pages custom domain, set by the `CNAME` file; the old https://howellnpartners.github.io/Website/ address redirects there). DNS is at GoDaddy: four A records for @ (185.199.108-111.153) and www as a CNAME. Pages caches for 10 minutes, so hard-refresh (Cmd + Shift + R) to see a fresh push.
 
 ## Design direction
 - Home, project and studio pages: modeled on Mouthwash.
@@ -28,7 +28,7 @@ Images go in `assets/work/` (one folder per project), `assets/services/`, `asset
 
 ## Next up
 - Add more projects as Brooke sends them (copy a block in `projects.js`).
-- Move howellnmedia.com over to this site.
+- Decide what happens to howellnmedia.com (point it at howelln.com?).
 
 ## Working on it
 - Preview: `python3 -m http.server 8000`, then open http://localhost:8000.
