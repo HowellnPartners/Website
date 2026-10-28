@@ -216,6 +216,7 @@ window.STUDIO = [
   video : optional muted clip that loops behind the panel (image is its poster); mobileVideo is the phone cut
   mobileImage : optional portrait version used on phones (768px wide and under)
   link  : optional, e.g. "project.html?p=good-days" — clicking the panel opens it (a full https:// address opens in a new tab)
+  hover : optional round badge that follows the mouse over the panel (desktop only), e.g. "assets/services/hover/bbz.jpg"
   shade : optional, true darkens the photo more so white text reads on bright images
   items : shown as the small line at the bottom of each panel
 */
@@ -225,6 +226,7 @@ window.CAPABILITIES = [
     image: "assets/services/brand-design-good-days.jpg",
     mobileImage: "assets/services/brand-design-good-days-mobile.jpg",
     link: "project.html?p=good-days",
+    hover: "assets/services/hover/good-days.jpg",
     items: ["Brand Identity & Logo", "Brand Kit Revamps", "Typography & Visual Systems", "Campaign Visual Rollouts", "Ad Creative", "Social Graphic Design"]
   },
   {
@@ -232,6 +234,7 @@ window.CAPABILITIES = [
     image: "assets/services/digital-web.jpg",
     mobileImage: "assets/services/digital-web-mobile.jpg",
     link: "https://uncensored-health.com/",
+    hover: "assets/services/hover/uncensored.jpg",
     items: ["Custom Website Design", "Landing Pages", "UX/UI & Site Architecture", "E-Commerce", "CMS Setup", "SEO-Ready Builds"]
   },
   {
@@ -245,6 +248,8 @@ window.CAPABILITIES = [
     title: "Social & Content",
     image: "assets/services/social-content.jpg",
     mobileImage: "assets/services/social-content-mobile.jpg",
+    link: "https://www.mybiomefit.com/",
+    hover: "assets/services/hover/bbz.jpg",
     items: ["Content Systems", "Recurring Content Shoots", "Video Scripting", "Short-Form Editing", "Trend-Aware Direction", "Batch Production"]
   },
   {

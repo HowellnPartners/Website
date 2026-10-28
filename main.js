@@ -65,6 +65,7 @@
     stack.innerHTML = list.map((s, i) => `
       <section class="ss-panel${s.shade ? " is-shaded" : ""}" id="${source}-${i + 1}" style="z-index:${i + 1}"${s.link ? ` data-link="${esc(s.link)}"` : ""}>
         ${s.video ? `<video class="ss-bg"${s.image ? ` poster="${esc(s.image)}"` : ""} autoplay muted loop playsinline preload="metadata" aria-hidden="true">${s.mobileVideo ? `<source src="${esc(s.mobileVideo)}" type="video/mp4" media="(max-width: 768px)">` : ""}<source src="${esc(s.video)}" type="video/mp4"></video>` : s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
+        ${s.hover && s.link ? `<img class="ss-cursor" src="${esc(s.hover)}" alt="" aria-hidden="true">` : ""}
         <div class="ss-inner">
           <div class="ss-label">${esc(label)}</div>
           <ul class="ss-list">
@@ -85,6 +86,23 @@
       else window.location.href = panel.dataset.link;
     });
   });
+
+  /* ---------- Hover badge: follows the mouse over a linked panel (mouse only) ----------
+     One position for every badge, so after a scroll the new panel's badge is already
+     under the pointer. Each panel clips its own badge, so it never spills over. */
+  if (document.querySelector(".ss-cursor") && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const root = document.documentElement.style;
+    let tx = innerWidth / 2, ty = innerHeight / 2, x = tx, y = ty, raf = 0;
+    const step = () => {
+      x += (tx - x) * 0.2; y += (ty - y) * 0.2;
+      root.setProperty("--mx", x + "px"); root.setProperty("--my", y + "px");
+      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(step) : 0;
+    };
+    addEventListener("pointermove", (e) => {
+      tx = e.clientX; ty = e.clientY;
+      if (!raf) raf = requestAnimationFrame(step);
+    }, { passive: true });
+  }
 
   /* ---------- Copy email ---------- */
   document.querySelectorAll(".copy-email").forEach((el) => {
