@@ -119,6 +119,7 @@
       const data = new FormData(form);
       const lines = [];
       for (const key of new Set(data.keys())) {
+        if (key.startsWith("_")) continue;
         const val = data.getAll(key).filter(Boolean).join(", ");
         if (val) lines.push(`${key}: ${key === "Budget" ? "$" + val : val}`);
       }

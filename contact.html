@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="stylesheet" href="styles.css?v=36">
 </head>
 <body class="page-contact">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -36,9 +36,10 @@
       <h1 class="hero-title">Heads turn, jaws drop, eyes pop, everybody is head over heels for you.<br><span>We make you stand out from the crowd.</span></h1>
     </section>
 
-    <!-- data-endpoint: paste a form service address (e.g. Formspree) to receive entries
-         directly. Left empty, Submit opens the visitor's email app with everything filled in. -->
-    <form class="cf" id="contact-form" data-endpoint="" data-email="designs@howellnmedia.com" novalidate>
+    <!-- Entries go to Formspree (data-endpoint). If that address is ever removed, Submit
+         falls back to opening the visitor's email app with everything filled in. -->
+    <form class="cf" id="contact-form" data-endpoint="https://formspree.io/f/xqppbbpr" data-email="designs@howellnmedia.com" novalidate>
+      <input type="hidden" name="_subject" value="New project enquiry from the Howell'n website">
       <fieldset class="cf-field">
         <legend>Name</legend>
         <div class="cf-row">
@@ -48,7 +49,7 @@
       </fieldset>
 
       <div class="cf-field">
-        <label>Email <em>(required)</em><input type="email" name="Email" autocomplete="email" required></label>
+        <label>Email <em>(required)</em><input type="email" name="email" autocomplete="email" required></label>
         <label class="cf-check"><input type="checkbox" name="Newsletter" value="Yes"> Sign up for news and updates</label>
       </div>
 
@@ -127,7 +128,7 @@
     </div>
   </footer>
 
-  <script src="projects.js?v=35"></script>
-  <script src="main.js?v=35"></script>
+  <script src="projects.js?v=36"></script>
+  <script src="main.js?v=36"></script>
 </body>
 </html>
