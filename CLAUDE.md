@@ -10,7 +10,7 @@ Live address: https://howellnpartners.github.io/Website/ (GitHub Pages, no custo
 
 ## Decisions not to undo
 - The name is always "Howell'n". Never "Howell'n Media".
-- No logo image in the header, footer or loader. The wordmark is live text.
+- No logo image anywhere: not in the header, footer or loader (the wordmark is live text), and not in the browser tab or share preview. The tab icon is a black dot (`assets/img/favicon.svg` / `.png`, `apple-touch-icon.png`), and the share image (`og-image.jpg`) is just "Bringing vision to fruition." in white on black.
 - Large headline leading is 0.95 (`--lh-display`), loosened from 0.85 on purpose.
 
 ## Site map
