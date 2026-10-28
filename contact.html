@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Howell'n</title>
+  <meta name="description" content="Start a project with Howell'n.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=34">
+</head>
+<body class="page-contact">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <a class="header-logo" href="index.html" aria-label="Howell'n, home">Howell'n</a>
+    <nav class="header-nav" aria-label="Main">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#capabilities">Services</a>
+      <a href="https://www.instagram.com/howellnstudio/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <div class="header-right">
+      <a href="studio.html">Studio</a>
+      <a class="header-contact" href="contact.html" aria-current="page">Contact</a>
+    </div>
+  </header>
+
+  <main id="main" class="contact-page">
+    <span id="top"></span>
+
+    <section class="hero">
+      <h1 class="hero-title">Heads turn, jaws drop, eyes pop, everybody is head over heels for you.<br><span>We make you stand out from the crowd.</span></h1>
+    </section>
+
+    <!-- data-endpoint: paste a form service address (e.g. Formspree) to receive entries
+         directly. Left empty, Submit opens the visitor's email app with everything filled in. -->
+    <form class="cf" id="contact-form" data-endpoint="" data-email="designs@howellnmedia.com" novalidate>
+      <fieldset class="cf-field">
+        <legend>Name</legend>
+        <div class="cf-row">
+          <label>First Name <em>(required)</em><input type="text" name="First name" autocomplete="given-name" required></label>
+          <label>Last Name <em>(required)</em><input type="text" name="Last name" autocomplete="family-name" required></label>
+        </div>
+      </fieldset>
+
+      <div class="cf-field">
+        <label>Email <em>(required)</em><input type="email" name="Email" autocomplete="email" required></label>
+        <label class="cf-check"><input type="checkbox" name="Newsletter" value="Yes"> Sign up for news and updates</label>
+      </div>
+
+      <div class="cf-field">
+        <label>Phone<input type="tel" name="Phone" autocomplete="tel"></label>
+      </div>
+
+      <fieldset class="cf-field">
+        <legend>Type of Project</legend>
+        <div class="cf-pills">
+          <label><input type="checkbox" name="Project type" value="Brand Design & Identity"><span>Brand Design &amp; Identity</span></label>
+          <label><input type="checkbox" name="Project type" value="Web Design"><span>Web Design</span></label>
+          <label><input type="checkbox" name="Project type" value="Photography"><span>Photography</span></label>
+          <label><input type="checkbox" name="Project type" value="Content Creation"><span>Content Creation</span></label>
+          <label><input type="checkbox" name="Project type" value="Social Media Management"><span>Social Media Management</span></label>
+          <label><input type="checkbox" name="Project type" value="Video Production"><span>Video Production</span></label>
+          <label><input type="checkbox" name="Project type" value="Marketing & Campaigns"><span>Marketing &amp; Campaigns</span></label>
+          <label><input type="checkbox" name="Project type" value="Analytics & Performance"><span>Analytics &amp; Performance</span></label>
+          <label><input type="checkbox" name="Project type" value="Not sure — let's talk"><span>Not sure — let's talk</span></label>
+        </div>
+      </fieldset>
+
+      <div class="cf-field">
+        <label>Estimated Project Timeline
+          <select name="Timeline">
+            <option value="">Select an option</option>
+            <option>As soon as possible</option>
+            <option>Within 1 month</option>
+            <option>1–3 months</option>
+            <option>3–6 months</option>
+            <option>6+ months</option>
+            <option>Flexible</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="cf-field">
+        <label>What is your budget?
+          <span class="cf-money"><span aria-hidden="true">$</span><input type="text" name="Budget" inputmode="decimal"></span>
+        </label>
+      </div>
+
+      <div class="cf-field">
+        <label>How did you hear about us?
+          <select name="Heard about us">
+            <option value="">Select an option</option>
+            <option>Instagram</option>
+            <option>Referral / word of mouth</option>
+            <option>Google</option>
+            <option>LinkedIn</option>
+            <option>Saw our work</option>
+            <option>Other</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="cf-field">
+        <label>Is there anything else you'd like us to know?<textarea name="Message" rows="6"></textarea></label>
+      </div>
+
+      <button class="cf-submit" type="submit">Submit</button>
+      <p class="cf-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-wordmark" aria-hidden="true"><span id="wordmark">Howell'n</span></div>
+    <div class="footer-meta">
+      <p>&copy;<span id="year">2026</span> Howell'n</p>
+      <p>A creative production house<br>and growth engine.</p>
+      <p>
+        <a href="https://www.instagram.com/howellnstudio/" target="_blank" rel="noopener">Instagram</a><br>
+        <a href="https://www.linkedin.com/company/howell-n-media/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+      <p><a href="#top">Back to top</a></p>
+    </div>
+  </footer>
+
+  <script src="projects.js?v=34"></script>
+  <script src="main.js?v=34"></script>
+</body>
+</html>

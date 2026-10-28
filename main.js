@@ -104,6 +104,42 @@
     }, { passive: true });
   }
 
+  /* ---------- Contact form ----------
+     With data-endpoint set (a form service such as Formspree) entries are posted there.
+     Without one, Submit opens the visitor's email app with everything filled in. */
+  const form = document.getElementById("contact-form");
+  if (form) {
+    const status = form.querySelector(".cf-status");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const bad = [...form.querySelectorAll("[required]")].find((f) => !f.checkValidity());
+      form.classList.add("was-checked");
+      if (bad) { status.textContent = "Please fill in your name and a valid email."; bad.focus(); return; }
+
+      const data = new FormData(form);
+      const lines = [];
+      for (const key of new Set(data.keys())) {
+        const val = data.getAll(key).filter(Boolean).join(", ");
+        if (val) lines.push(`${key}: ${key === "Budget" ? "$" + val : val}`);
+      }
+      const endpoint = form.dataset.endpoint;
+      if (endpoint) {
+        status.textContent = "Sending…";
+        fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
+          .then((r) => {
+            if (!r.ok) throw new Error();
+            form.reset(); form.classList.remove("was-checked");
+            status.textContent = "Thank you. We'll be in touch soon.";
+          })
+          .catch(() => { status.textContent = `Something went wrong. Please email ${form.dataset.email}.`; });
+      } else {
+        const name = `${data.get("First name")} ${data.get("Last name")}`.trim();
+        window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent("New project enquiry from " + name)}&body=${encodeURIComponent(lines.join("\n"))}`;
+        status.textContent = "Your email app should open with your message ready to send.";
+      }
+    });
+  }
+
   /* ---------- Copy email ---------- */
   document.querySelectorAll(".copy-email").forEach((el) => {
     el.addEventListener("click", (e) => {

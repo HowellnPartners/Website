@@ -16,6 +16,7 @@ Live address: https://howellnpartners.github.io/Website/ (GitHub Pages, no custo
 ## Site map
 - `index.html` (home): loader, header (Work, Services, Instagram / Studio, Contact), hero headline (no video; the reel plays behind the Production panel and in the Studio Reel box), Selected Work grid, Capabilities panels, Get in touch, footer.
 - `project.html?p=<id>`: project profile built from that project's entry in `projects.js` (title, tagline, Client / Year / Role, hero, blocks, Overview, Team, Prev / Next).
+- `contact.html`: white page, "Heads turn, jaws drop…" headline and the enquiry form. The header Contact link on every page goes here. The form has no server: with `data-endpoint` empty, Submit opens the visitor's email app addressed to designs@howellnmedia.com with every answer filled in; paste a form service address (e.g. Formspree) into `data-endpoint` to receive entries directly.
 - `studio.html`: intro paragraph, Information (Contact, Capabilities, Industries, Platforms, Clients), Approach.
 
 ## Where to edit
