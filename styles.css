@@ -713,6 +713,7 @@ body.is-loading { overflow: hidden; }
 .st-block li, .st-block dd { color: var(--muted-2); }
 .st-block dt { font-weight: 500; }
 .st-block dd { margin: 0 0 12px; }
+@media (min-width: 769px) { .st-block { font-size: clamp(15px, 1.15vw, 18px); line-height: 1.25; } }
 .st-block a:hover { color: var(--fg); }
 
 /* Approach */
