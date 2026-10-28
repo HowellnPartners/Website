@@ -50,6 +50,51 @@
 */
 window.PROJECTS = [
   {
+    id: "sincerely-yas", title: "Sincerely YAS", tags: ["Web Design", "Development", "Shopify"],
+    summary: "Made to be shared.",
+    image: "assets/work/yas/01.jpg", ratio: "1800 / 1200",
+    tagline: "Made to be shared.",
+    client: "Sincerely YAS",
+    year: "2026",
+    // Same layout as the Sincerely YAS case on brookerogersdesign.com, but square corners
+    layout: "case", hero: false, square: true,
+    blocks: [
+      { type: "image", image: "assets/work/yas/01.jpg" },
+      { type: "lead", lead: "SINCERELY YAS", text: "is a brand built around the table — the round of drinks, the plate in the middle, the people leaning in. The site had to feel like being invited rather than sold to." },
+      { type: "red", video: "assets/work/yas/homepage.mp4", poster: "assets/work/yas/poster.jpg" },
+      { type: "lead", lead: "DESIGNED AND BUILT", text: "end to end on Shopify — custom coded rather than themed, so every section behaves the way it was drawn instead of the way a template allows." },
+      { type: "image", image: "assets/work/yas/02.jpg" },
+      { type: "pair", items: ["assets/work/yas/03.jpg", "assets/work/yas/04.jpg"] },
+      { type: "red", image: "assets/work/yas/05.jpg" },
+      { type: "lead", lead: "THE PRODUCT PAGES", text: "carry the same warmth as the photography — generous imagery, a clear path to checkout, and a layout that holds up whether there are three products or thirty." },
+      { type: "trio", items: ["assets/work/yas/06.jpg", "assets/work/yas/07.jpg", "assets/work/yas/08.jpg"] }
+    ]
+  },
+  {
+    id: "pap", title: "Premier Asset Partners",
+    tags: ["Branding", "Strategy", "Social Media", "Website Design", "Marketing Collateral"],
+    summary: "Beyond the transaction.",
+    video: "assets/work/pap/hero.mp4", image: "assets/work/pap/poster.jpg", mark: "assets/work/pap/seal.svg", ratio: "1600 / 844",
+    tagline: "Beyond the transaction.",
+    client: "Premier Asset Partners, Lake Mary, FL",
+    year: "2026",
+    // Same layout as the PAP case on brookerogersdesign.com, but square corners
+    layout: "case", hero: false, square: true,
+    blocks: [
+      { type: "clip", video: "assets/work/pap/hero.mp4", poster: "assets/work/pap/poster.jpg", mark: "assets/work/pap/seal.svg", ratio: "1929 / 1187", markW: "28.8%" },
+      { type: "image", image: "assets/work/pap/mark.jpg" },
+      { type: "bleed", image: "assets/work/pap/stationery.jpg" },
+      { type: "slide", dur: "64s", items: ["assets/work/pap/post-1.jpg", "assets/work/pap/post-2.jpg", "assets/work/pap/post-3.jpg", "assets/work/pap/post-4.jpg", "assets/work/pap/post-5.jpg", "assets/work/pap/post-6.jpg"] },
+      { type: "image", image: "assets/work/pap/logoband.jpg" },
+      { type: "bleed", image: "assets/work/pap/brochure.jpg" },
+      { type: "bleed", image: "assets/work/pap/merch.jpg" },
+      { type: "patterns", each: 2.2, ratio: "565.34 / 443.5", items: ["assets/work/pap/pattern-1.jpg", "assets/work/pap/pattern-2.jpg", "assets/work/pap/pattern-3.jpg", "assets/work/pap/pattern-4.jpg", "assets/work/pap/pattern-5.jpg", "assets/work/pap/pattern-6.jpg"] },
+      { type: "bleed", image: "assets/work/pap/skyline.jpg" },
+      { type: "image", image: "assets/work/pap/cards.jpg" },
+      { type: "image", image: "assets/work/pap/closing.jpg" }
+    ]
+  },
+  {
     id: "madrun", title: "MADRUN", tags: ["Product Design", "Photography"],
     summary: "Built for the mile after.",
     image: "assets/work/madrun/cover.jpg", ratio: "2200 / 1160",
@@ -81,51 +126,6 @@ window.PROJECTS = [
         ] }
     ],
     overview: ["MADRUN turns recovery into part of the performance. A high-impact identity designed to stand out in the gym, on the shelf, and everywhere in between."]
-  },
-  {
-    id: "pap", title: "Premier Asset Partners",
-    tags: ["Branding", "Strategy", "Social Media", "Website Design", "Marketing Collateral"],
-    summary: "Beyond the transaction.",
-    video: "assets/work/pap/hero.mp4", image: "assets/work/pap/poster.jpg", mark: "assets/work/pap/seal.svg", ratio: "1600 / 844",
-    tagline: "Beyond the transaction.",
-    client: "Premier Asset Partners, Lake Mary, FL",
-    year: "2026",
-    // Same layout as the PAP case on brookerogersdesign.com, but square corners
-    layout: "case", hero: false, square: true,
-    blocks: [
-      { type: "clip", video: "assets/work/pap/hero.mp4", poster: "assets/work/pap/poster.jpg", mark: "assets/work/pap/seal.svg", ratio: "1929 / 1187", markW: "28.8%" },
-      { type: "image", image: "assets/work/pap/mark.jpg" },
-      { type: "bleed", image: "assets/work/pap/stationery.jpg" },
-      { type: "slide", dur: "64s", items: ["assets/work/pap/post-1.jpg", "assets/work/pap/post-2.jpg", "assets/work/pap/post-3.jpg", "assets/work/pap/post-4.jpg", "assets/work/pap/post-5.jpg", "assets/work/pap/post-6.jpg"] },
-      { type: "image", image: "assets/work/pap/logoband.jpg" },
-      { type: "bleed", image: "assets/work/pap/brochure.jpg" },
-      { type: "bleed", image: "assets/work/pap/merch.jpg" },
-      { type: "patterns", each: 2.2, ratio: "565.34 / 443.5", items: ["assets/work/pap/pattern-1.jpg", "assets/work/pap/pattern-2.jpg", "assets/work/pap/pattern-3.jpg", "assets/work/pap/pattern-4.jpg", "assets/work/pap/pattern-5.jpg", "assets/work/pap/pattern-6.jpg"] },
-      { type: "bleed", image: "assets/work/pap/skyline.jpg" },
-      { type: "image", image: "assets/work/pap/cards.jpg" },
-      { type: "image", image: "assets/work/pap/closing.jpg" }
-    ]
-  },
-  {
-    id: "sincerely-yas", title: "Sincerely YAS", tags: ["Web Design", "Development", "Shopify"],
-    summary: "Made to be shared.",
-    image: "assets/work/yas/01.jpg", ratio: "1800 / 1200",
-    tagline: "Made to be shared.",
-    client: "Sincerely YAS",
-    year: "2026",
-    // Same layout as the Sincerely YAS case on brookerogersdesign.com, but square corners
-    layout: "case", hero: false, square: true,
-    blocks: [
-      { type: "image", image: "assets/work/yas/01.jpg" },
-      { type: "lead", lead: "SINCERELY YAS", text: "is a brand built around the table — the round of drinks, the plate in the middle, the people leaning in. The site had to feel like being invited rather than sold to." },
-      { type: "red", video: "assets/work/yas/homepage.mp4", poster: "assets/work/yas/poster.jpg" },
-      { type: "lead", lead: "DESIGNED AND BUILT", text: "end to end on Shopify — custom coded rather than themed, so every section behaves the way it was drawn instead of the way a template allows." },
-      { type: "image", image: "assets/work/yas/02.jpg" },
-      { type: "pair", items: ["assets/work/yas/03.jpg", "assets/work/yas/04.jpg"] },
-      { type: "red", image: "assets/work/yas/05.jpg" },
-      { type: "lead", lead: "THE PRODUCT PAGES", text: "carry the same warmth as the photography — generous imagery, a clear path to checkout, and a layout that holds up whether there are three products or thirty." },
-      { type: "trio", items: ["assets/work/yas/06.jpg", "assets/work/yas/07.jpg", "assets/work/yas/08.jpg"] }
-    ]
   },
   {
     id: "blank", title: "BLANK", tags: ["Branding", "Positioning", "Web Design"],
