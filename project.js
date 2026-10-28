@@ -33,7 +33,7 @@
     const ratio = esc(item.ratio || fallbackRatio || "16 / 9");
     let inner;
     if (item.video) {
-      inner = `<video src="${esc(item.video)}" autoplay muted loop playsinline ${item.image ? `poster="${esc(item.image)}"` : ""}></video>`;
+      inner = `<video src="${esc(item.video)}" data-lazy muted loop playsinline preload="none" ${item.image ? `poster="${esc(item.image)}"` : ""}></video>`;
     } else if (item.image) {
       inner = `<img src="${esc(item.image)}" alt="${esc(item.alt || p.title)}" loading="lazy">`;
     } else {
@@ -100,7 +100,7 @@
     lead: (b) => `<p class="cs-statement"><span class="lead">${esc(b.lead)}</span> ${esc(b.text)}</p>`,
 
     motion: (b) => `<div class="cs-motion">
-        <video autoplay loop muted playsinline preload="metadata"><source src="${esc(b.video)}" type="video/mp4"></video>
+        <video data-lazy loop muted playsinline preload="none"><source src="${esc(b.video)}" type="video/mp4"></video>
         <div class="mo-copy">
           ${b.lineArt ? `<img class="mo-line" src="${esc(b.lineArt)}" alt="${esc(b.line || "")}">` : b.line ? `<p class="mo-line">${esc(b.line)}</p>` : ""}
           ${b.mark ? `<img class="mo-mark" src="${esc(b.mark)}" alt="" loading="lazy">` : ""}
@@ -134,12 +134,12 @@
 
     // screens framed in a brand-colour panel (red by default); video or image
     red: (b) => `<div class="cs-red"${b.bg ? ` style="background:${esc(b.bg)}"` : ""}>${b.video
-        ? `<video autoplay loop muted playsinline preload="metadata"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>`
+        ? `<video data-lazy loop muted playsinline preload="none"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>`
         : `<img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy">`}</div>`,
 
     // a tinted clip with the mark held still on top
     clip: (b) => `<div class="cs-clip"${b.ratio ? ` style="aspect-ratio:${esc(b.ratio)}"` : ""}>
-        <video autoplay loop muted playsinline preload="metadata"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>
+        <video data-lazy loop muted playsinline preload="none"${b.poster ? ` poster="${esc(b.poster)}"` : ""}><source src="${esc(b.video)}" type="video/mp4"></video>
         ${b.mark ? `<img class="cl-mark" src="${esc(b.mark)}" alt="${esc(p.title)}"${b.markW ? ` style="width:${esc(b.markW)}"` : ""}>` : ""}
       </div>`,
 

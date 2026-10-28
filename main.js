@@ -11,7 +11,7 @@
       const url = `project.html?p=${encodeURIComponent(p.id)}`;
       let media;
       if (p.video) {
-        media = `<video src="${esc(p.video)}" autoplay muted loop playsinline ${p.image ? `poster="${esc(p.image)}"` : ""}></video>`;
+        media = `<video src="${esc(p.video)}" data-lazy muted loop playsinline preload="none" ${p.image ? `poster="${esc(p.image)}"` : ""}></video>`;
       } else if (p.image) {
         media = `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`;
       } else {
@@ -64,8 +64,8 @@
     const label = stack.dataset.label || "Our Studio";
     stack.innerHTML = list.map((s, i) => `
       <section class="ss-panel${s.shade ? " is-shaded" : ""}" id="${source}-${i + 1}" style="z-index:${i + 1}"${s.link ? ` data-link="${esc(s.link)}"` : ""}>
-        ${s.video ? `<video class="ss-bg"${s.image ? ` poster="${esc(s.image)}"` : ""} autoplay muted loop playsinline preload="metadata" aria-hidden="true">${s.mobileVideo ? `<source src="${esc(s.mobileVideo)}" type="video/mp4" media="(max-width: 768px)">` : ""}<source src="${esc(s.video)}" type="video/mp4"></video>` : s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
-        ${s.hover && s.link ? `<div class="ss-cursor" aria-hidden="true"><img src="${esc(s.hover)}" alt=""><span>See work</span></div>` : ""}
+        ${s.video ? `<video class="ss-bg"${s.image ? ` poster="${esc(s.image)}"` : ""} data-lazy muted loop playsinline preload="none" aria-hidden="true">${s.mobileVideo ? `<source src="${esc(s.mobileVideo)}" type="video/mp4" media="(max-width: 768px)">` : ""}<source src="${esc(s.video)}" type="video/mp4"></video>` : s.image ? `<picture>${s.mobileImage ? `<source media="(max-width: 768px)" srcset="${esc(s.mobileImage)}">` : ""}<img class="ss-bg" src="${esc(s.image)}" alt="" loading="lazy"></picture>` : `<div class="ss-bg ss-blank ss-tone-${(i % 4) + 1}"><span>Image ${i + 1}</span></div>`}
+        ${s.hover && s.link ? `<div class="ss-cursor" aria-hidden="true"><img src="${esc(s.hover)}" alt="" loading="lazy" decoding="async"><span>See work</span></div>` : ""}
         <div class="ss-inner">
           <div class="ss-label">${esc(label)}</div>
           <ul class="ss-list">
@@ -139,6 +139,22 @@
         status.textContent = "Your email app should open with your message ready to send.";
       }
     });
+  }
+
+  /* ---------- Videos: only download and play when near the screen ----------
+     Videos marked data-lazy start with preload="none", so nothing downloads until one is
+     about to scroll into view; they pause again once well off screen. */
+  const lazyVideos = document.querySelectorAll("video[data-lazy]");
+  if (lazyVideos.length && "IntersectionObserver" in window) {
+    const vio = new IntersectionObserver((entries) => {
+      entries.forEach(({ target: v, isIntersecting }) => {
+        if (isIntersecting) { v.preload = "auto"; v.play().catch(() => {}); }
+        else if (!v.paused) v.pause();
+      });
+    }, { rootMargin: "600px 0px" });
+    lazyVideos.forEach((v) => vio.observe(v));
+  } else {
+    lazyVideos.forEach((v) => { v.autoplay = true; v.preload = "auto"; v.play().catch(() => {}); });
   }
 
   /* ---------- Copy email ---------- */
