@@ -156,6 +156,28 @@ window.PROJECTS = [
     ]
   },
   {
+    id: "dazzling-doggie-duvet", title: "Dazzling Doggie Duvet", tags: ["Branding", "Website Design"],
+    summary: "Handmade with love, tested by paws.",
+    image: "assets/work/dazzling-doggie-duvet/hero.jpg", ratio: "2400 / 1363",
+    tagline: "Handmade with love, tested by paws.",
+    client: "Dazzling Doggie Duvet, Tampa, FL",
+    year: "2025",
+    // Built from the "Dazzling Doggie Duvet" frame (node 4-2646) in the Website Figma file, cut into its sections.
+    layout: "case", hero: false, square: true,
+    blocks: [
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/hero.jpg" },
+      { type: "image", image: "assets/work/dazzling-doggie-duvet/02-logo.jpg" },
+      { type: "image", image: "assets/work/dazzling-doggie-duvet/03-studio.jpg" },
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/04-sign.jpg" },
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/05-social.jpg" },
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/06-tagline.jpg" },
+      { type: "image", image: "assets/work/dazzling-doggie-duvet/07-marks.jpg" },
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/08-pillow.jpg" },
+      { type: "image", image: "assets/work/dazzling-doggie-duvet/09-cards.jpg" },
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/10-trio.jpg" }
+    ]
+  },
+  {
     id: "good-days", title: "good days", tags: ["Branding", "App Design", "UX & Strategy"],
     summary: "Every good day, in one place.",
     image: "assets/work/good-days/hero.jpg", ratio: "2400 / 1880",
@@ -241,6 +263,8 @@ window.CAPABILITIES = [
     title: "Strategy",
     image: "assets/services/strategy.jpg",
     mobileImage: "assets/services/strategy-mobile.jpg",
+    link: "project.html?p=dazzling-doggie-duvet",
+    hover: "assets/services/hover/dazzling-doggie-duvet.jpg",
     shade: true,
     items: ["Brand Positioning & Voice", "Audience Mapping", "Content Pillars", "Platform Strategy", "Campaign Planning", "KPI Mapping"]
   },
