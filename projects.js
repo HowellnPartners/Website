@@ -256,6 +256,8 @@ window.CAPABILITIES = [
     title: "Marketing",
     image: "assets/services/marketing.jpg",
     mobileImage: "assets/services/marketing-mobile.jpg",
+    link: "https://fieldofmemoriesbook.com/",
+    hover: "assets/services/hover/vintage-vault.jpg",
     items: ["Social Media Management", "Content Calendars", "Strategic Copywriting", "Community Engagement", "Email & Funnels", "Launch Execution"]
   },
   {
