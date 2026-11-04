@@ -1,4 +1,4 @@
-/* Renders a project profile (project.html?p=<id>) from window.PROJECTS. */
+/* Renders a project profile (/project?p=<id>) from window.PROJECTS. */
 (function () {
   const projects = window.PROJECTS || [];
   const root = document.getElementById("project");
@@ -9,7 +9,7 @@
   const p = projects[index];
 
   if (!p) {
-    root.innerHTML = `<header class="project-head"><h1 class="project-title">Project not found.<br><a href="index.html#work">Back to work</a></h1></header>`;
+    root.innerHTML = `<header class="project-head"><h1 class="project-title">Project not found.<br><a href="/#work">Back to work</a></h1></header>`;
     return;
   }
 
@@ -205,8 +205,8 @@
     </section>
 
     <nav class="project-pager" aria-label="More projects">
-      <a href="project.html?p=${esc(prev.id)}"><span>Prev:</span> ${esc(prev.title)}</a>
-      <a href="project.html?p=${esc(next.id)}"><span>Next:</span> ${esc(next.title)}</a>
+      <a href="/project?p=${esc(prev.id)}"><span>Prev:</span> ${esc(prev.title)}</a>
+      <a href="/project?p=${esc(next.id)}"><span>Next:</span> ${esc(next.title)}</a>
     </nav>`;
 
   /* ---------- Read More ---------- */

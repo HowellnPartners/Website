@@ -13,7 +13,7 @@
   To add a project: copy a block, change the fields, drop the image in assets/work/.
 
   ---------------------------------------------------------------------------
-  PROJECT PROFILE (project.html?p=<id>) — all optional; blanks show placeholders
+  PROJECT PROFILE (/project?p=<id>) — all optional; blanks show placeholders
   ---------------------------------------------------------------------------
   tagline : line after the title, e.g. "A new vision for late-night dining."
   client  : client name (defaults to title)
@@ -203,7 +203,7 @@ window.PROJECTS = [
   STUDIO — the full-screen "Our Studio" panels (home + studio page).
   Each item gets its own background as you scroll; its name lights up in the list.
   image : background, e.g. "assets/studio/editorial.jpg" ("" shows a dark blank panel)
-  link  : optional, e.g. "project.html?p=night-owl" (shows "See project")
+  link  : optional, e.g. "/project?p=night-owl" (shows "See project")
 */
 window.STUDIO = [
   {
@@ -237,7 +237,7 @@ window.STUDIO = [
   image : background, e.g. "assets/services/branding.jpg" ("" shows a dark blank panel)
   video : optional muted clip that loops behind the panel (image is its poster); mobileVideo is the phone cut
   mobileImage : optional portrait version used on phones (768px wide and under)
-  link  : optional, e.g. "project.html?p=good-days" — clicking the panel opens it (a full https:// address opens in a new tab)
+  link  : optional, e.g. "/project?p=good-days" — clicking the panel opens it (a full https:// address opens in a new tab)
   hover : optional round badge that follows the mouse over the panel (desktop only), e.g. "assets/services/hover/bbz.jpg"
   shade : optional, true darkens the photo more so white text reads on bright images
   items : shown as the small line at the bottom of each panel
@@ -247,7 +247,7 @@ window.CAPABILITIES = [
     title: "Brand & Design",
     image: "assets/services/brand-design-good-days.jpg",
     mobileImage: "assets/services/brand-design-good-days-mobile.jpg",
-    link: "project.html?p=good-days",
+    link: "/project?p=good-days",
     hover: "assets/services/hover/good-days.jpg",
     items: ["Brand Identity & Logo", "Brand Kit Revamps", "Typography & Visual Systems", "Campaign Visual Rollouts", "Ad Creative", "Social Graphic Design"]
   },
@@ -263,7 +263,7 @@ window.CAPABILITIES = [
     title: "Strategy",
     image: "assets/services/strategy.jpg",
     mobileImage: "assets/services/strategy-mobile.jpg",
-    link: "project.html?p=dazzling-doggie-duvet",
+    link: "/project?p=dazzling-doggie-duvet",
     hover: "assets/services/hover/dazzling-doggie-duvet.jpg",
     shade: true,
     items: ["Brand Positioning & Voice", "Audience Mapping", "Content Pillars", "Platform Strategy", "Campaign Planning", "KPI Mapping"]

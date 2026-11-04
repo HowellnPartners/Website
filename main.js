@@ -5,10 +5,35 @@
   const filterList = document.getElementById("filter-list");
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  /* ---------- Clean addresses ----------
+     GitHub Pages serves /studio for studio.html, so old .html links are tidied in the
+     address bar, and in-page links (#top, #work, …) scroll without leaving a #part. */
+  if (/\.html$/.test(location.pathname)) {
+    history.replaceState(null, "", location.pathname.replace(/(index)?\.html$/, "") + location.search + location.hash);
+  }
+  // Arriving with a #part (e.g. /#work from another page): jump there once the page is
+  // ready (after the home loader, which locks scrolling), then drop it from the address.
+  const arrivedAt = decodeURIComponent(location.hash.slice(1));
+  const showArrival = () => {
+    const el = arrivedAt && document.getElementById(arrivedAt);
+    if (el) el.scrollIntoView({ behavior: "instant" });
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  };
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href*="#"]');
+    if (!a || a.origin !== location.origin || a.pathname !== location.pathname) return;
+    const id = decodeURIComponent(a.hash.slice(1));
+    const el = id === "top" ? document.documentElement : document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView();
+    if (a.classList.contains("skip-link")) { el.setAttribute("tabindex", "-1"); el.focus({ preventScroll: true }); }
+  });
+
   /* ---------- Work grid (home) ---------- */
   if (grid) {
     grid.innerHTML = projects.filter((p) => !p.hideFromWork).map((p) => {
-      const url = `project.html?p=${encodeURIComponent(p.id)}`;
+      const url = `/project?p=${encodeURIComponent(p.id)}`;
       let media;
       if (p.video) {
         media = `<video src="${esc(p.video)}" data-lazy muted loop playsinline preload="none" ${p.image ? `poster="${esc(p.image)}"` : ""}></video>`;
@@ -196,6 +221,7 @@
      A short beat for the wordmark, then out of the way. It doesn't wait for
      window "load": that waits on the reel and every image, which took ~3s live. */
   if (document.body.classList.contains("is-loading")) {
-    setTimeout(() => document.body.classList.remove("is-loading"), 700);
-  }
+    setTimeout(() => { document.body.classList.remove("is-loading"); showArrival(); }, 700);
+  } else if (document.readyState === "complete") showArrival();
+  else addEventListener("load", showArrival);
 })();

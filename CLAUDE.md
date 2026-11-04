@@ -32,8 +32,9 @@ Images go in `assets/work/` (one folder per project), `assets/services/`, `asset
 
 ## Working on it
 - Preview: `python3 -m http.server 8000`, then open http://localhost:8000.
+- Clean addresses: links use `/`, `/studio`, `/contact`, `/project?p=<id>` and `/#work` (GitHub Pages serves `/studio` from `studio.html`), never `.html`. main.js tidies old `.html` addresses and keeps `#top` / `#work` out of the address bar. Plain `python3 -m http.server` can't serve `/studio`, so preview with a server that falls back to `<path>.html`.
 - Show changes in the browser before pushing; push to `main` to publish.
 - Speed: every `<video>` uses `data-lazy` + `preload="none"` (no `autoplay`); main.js starts it when it scrolls near and pauses it off screen. Keep new videos the same way. Hover badges use `loading="lazy"`. Don't recompress photos to save bytes: Brooke wants full image quality.
-- After changing CSS or JS, bump the `?v=N` on the `styles.css` / `*.js` links in all three HTML files, or browsers keep the old copy.
+- After changing CSS or JS, bump the `?v=N` on the `styles.css` / `*.js` links in all four HTML files, or browsers keep the old copy.
 - The repo is public: no passwords, keys or private client info. Public contact email only (designs@howellnmedia.com).
 - The older folder `../site` is a separate, earlier build with no GitHub remote. Don't edit it for this site.
