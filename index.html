@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- Until GitHub Pages "Enforce HTTPS" is on, send http visitors to the secure address -->
+  <script>if (location.protocol === "http:" && /(^|\.)howelln\.com$/.test(location.hostname)) location.replace("https://howelln.com" + location.pathname + location.search + location.hash);</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Howell'n</title>
   <meta name="description" content="Howell'n is a full-service creative agency pairing high-end visual storytelling with structured growth strategy.">
