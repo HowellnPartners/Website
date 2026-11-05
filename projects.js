@@ -192,7 +192,7 @@ window.PROJECTS = [
       { type: "bleed", image: "assets/work/good-days/hero.jpg" },
       { type: "image", image: "assets/work/good-days/02-app.jpg" },
       { type: "bleed", image: "assets/work/good-days/03-trail.jpg" },
-      { type: "image", image: "assets/work/good-days/04-colours.jpg" },
+      { type: "image", image: "assets/work/good-days/04-grid.jpg" },
       { type: "bleed", image: "assets/work/good-days/05-screens.jpg" },
       { type: "image", image: "assets/work/good-days/06-merch.jpg" }
     ]
