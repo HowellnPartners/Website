@@ -194,11 +194,13 @@ window.PROJECTS = [
       { type: "clip", video: "assets/work/hot-kini/cover.mp4", poster: "assets/work/hot-kini/poster.jpg", mark: "assets/work/hot-kini/logo.png", ratio: "1684 / 947", markW: "73.9%" },
       { type: "lead", lead: "HOT KINI", text: "is a hot sauce company and bikini line built on personality rather than heat scales. Summer Flame, Cowgirl Heat and Golden Heat each get their own colorway inside one label architecture." },
       { type: "bottle", image: "assets/work/hot-kini/surf.jpg", items: ["assets/work/hot-kini/label-cowgirl.png", "assets/work/hot-kini/label-golden.png", "assets/work/hot-kini/label-summer.png"] },
-      { type: "image", image: "assets/work/hot-kini/grid.jpg", narrow: "74%" },
+      { type: "image", image: "assets/work/hot-kini/grid-v2.jpg", narrow: "74%" },
       { type: "image", image: "assets/work/hot-kini/landing.jpg", narrow: "92%" },
       { type: "image", image: "assets/work/hot-kini/stories.jpg" },
-      { type: "image", image: "assets/work/hot-kini/pair.jpg" },
-      { type: "bleed", image: "assets/work/hot-kini/band.jpg" }
+      { type: "bleed", image: "assets/work/hot-kini/pattern.jpg" },
+      { type: "bleed", image: "assets/work/hot-kini/band.jpg" },
+      { type: "image", image: "assets/work/hot-kini/closeup.jpg" },
+      { type: "bleed", image: "assets/work/hot-kini/calienton.jpg" }
     ]
   },
   {
