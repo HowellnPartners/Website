@@ -44,7 +44,7 @@
       }
       return `
         <article class="work-card reveal" id="work-${esc(p.id)}" data-tags="${esc(p.tags.join("|"))}">
-          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}">${media}${p.mark ? `<img class="work-mark" src="${esc(p.mark)}" alt="" aria-hidden="true">` : ""}</a>
+          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}">${media}${p.mark ? `<img class="work-mark" src="${esc(p.mark)}" alt="" aria-hidden="true"${p.markW ? ` style="width:${esc(p.markW)};height:auto"` : ""}>` : ""}</a>
           <div class="work-info">
             <h3 class="work-card-title"><a href="${url}">${esc(p.title)}</a></h3>
             ${p.summary ? `<p class="work-card-summary">${esc(p.summary)}</p>` : ""}

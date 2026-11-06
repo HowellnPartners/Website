@@ -91,7 +91,13 @@
     /* Case-study blocks, matching the portfolio case layout (see projects.js) */
     bleed: (b) => `<figure class="cs-bleed"><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></figure>`,
 
-    image: (b) => `<figure class="cs-full"><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></figure>`,
+    image: (b) => `<figure class="cs-full${b.narrow ? " cs-narrow" : ""}"${b.narrow ? ` style="width:${esc(b.narrow)};margin-left:auto;margin-right:auto"` : ""}><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></figure>`,
+
+    // the bottle over a photo, its label blinking through the flavours (timer below)
+    bottle: (b) => `<div class="cs-bottle">
+        <img class="bt-bg" src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy">
+        <div class="bt-labels">${(b.items || []).map((s, i) => `<img src="${esc(s)}" alt="${i === 0 ? esc(p.title) + " hot sauce bottle" : ""}"${i === 0 ? ' class="is-on"' : ' aria-hidden="true"'} loading="lazy">`).join("")}</div>
+      </div>`,
 
     pair: (b) => `<div class="cs-pair">${(b.items || []).map((s) => `<figure><img src="${esc(s)}" alt="${esc(p.title)}" loading="lazy"></figure>`).join("")}</div>`,
 
@@ -278,4 +284,22 @@
   };
   document.addEventListener("pointerup", release);
   document.addEventListener("pointercancel", release);
+
+  /* ---------- Bottle labels: blink to the next flavour; the one it replaces stays
+     solid underneath so the outline never flickers ---------- */
+  const labelSets = document.querySelectorAll(".bt-labels");
+  if (labelSets.length && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    setInterval(() => {
+      labelSets.forEach((set) => {
+        const imgs = set.children;
+        let cur = 0;
+        for (let i = 0; i < imgs.length; i++) {
+          imgs[i].classList.remove("is-under");
+          if (imgs[i].classList.contains("is-on")) cur = i;
+        }
+        imgs[cur].classList.replace("is-on", "is-under");
+        imgs[(cur + 1) % imgs.length].classList.add("is-on");
+      });
+    }, 900);
+  }
 })();

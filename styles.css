@@ -841,3 +841,19 @@ body.is-loading { overflow: hidden; }
   .cf-row { grid-template-columns: 1fr; gap: 20px; }
 }
 
+
+/* ---------- Hot Kini: bottle over the surf photo, labels blinking ---------- */
+.cs-bottle {
+  position: relative; width: 100%; aspect-ratio: 1695 / 1156;
+  border-radius: var(--cs-r); overflow: hidden; margin-bottom: var(--cs-space);
+  background: #3a3a3a;
+}
+.cs-bottle .bt-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+/* where the bottle sits in the Figma section (71:8726) */
+.bt-labels { position: absolute; left: 48.26%; top: 12.28%; width: 43.06%; aspect-ratio: 1460 / 1743; }
+.bt-labels img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; }
+.bt-labels img.is-under { opacity: 1; z-index: 1; }
+.bt-labels img.is-on { opacity: 1; z-index: 2; }
+/* a board exported with its own edges: no rounding, full width on phones */
+.cs-narrow img { border-radius: 0; }
+@media (max-width: 768px) { .cs-narrow { width: 100% !important; } }

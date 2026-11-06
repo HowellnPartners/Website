@@ -8,6 +8,7 @@
   image  : cover image, e.g. "assets/work/night-owl.jpg" ("" shows a blank slot)
   video  : optional looping cover video, e.g. "assets/work/night-owl.mp4"
   ratio  : cover aspect ratio, e.g. "16 / 9" or "4 / 5"
+  mark / markW : a logo laid over the cover; markW sizes a wide wordmark by width (a round seal sizes by height)
   hideFromWork : true keeps a project off the home grid (its page still works, e.g. from a Capabilities link)
 
   To add a project: copy a block, change the fields, drop the image in assets/work/.
@@ -31,6 +32,9 @@
     { type: "text", heading: "Approach", paragraphs: ["...", "..."] }
 
   Any item can use video: "assets/work/clip.mp4" instead of image.
+  Case "image" blocks take narrow: "74%" for a board that sits inside the Figma frame's margins.
+  { type: "bottle", image: "photo.jpg", items: ["flavour-1.png", ...] } lays the bottle over the
+  photo and blinks through the flavours (each PNG is the whole bottle, same size and place).
   Leave blocks out to see the full layout as blank slots.
 
   EXAMPLE
@@ -175,6 +179,26 @@ window.PROJECTS = [
       { type: "bleed", image: "assets/work/dazzling-doggie-duvet/08-pillow.jpg" },
       { type: "image", image: "assets/work/dazzling-doggie-duvet/09-cards.jpg" },
       { type: "bleed", image: "assets/work/dazzling-doggie-duvet/10-trio.jpg" }
+    ]
+  },
+  {
+    id: "hot-kini", title: "Hot Kini", tags: ["Branding", "Marketing", "Website", "Social Media"],
+    summary: "Bring the heat.",
+    video: "assets/work/hot-kini/cover.mp4", image: "assets/work/hot-kini/poster.jpg", mark: "assets/work/hot-kini/logo.png", markW: "72%", ratio: "1520 / 856",
+    tagline: "Bring the heat.",
+    client: "Hot Kini",
+    year: "2025",
+    // Same layout as the Hot Kini case on brookerogersdesign.com (Figma 1-436), square corners
+    layout: "case", hero: false, square: true,
+    blocks: [
+      { type: "clip", video: "assets/work/hot-kini/cover.mp4", poster: "assets/work/hot-kini/poster.jpg", mark: "assets/work/hot-kini/logo.png", ratio: "1684 / 947", markW: "73.9%" },
+      { type: "lead", lead: "HOT KINI", text: "is a hot sauce company and bikini line built on personality rather than heat scales. Summer Flame, Cowgirl Heat and Golden Heat each get their own colorway inside one label architecture." },
+      { type: "bottle", image: "assets/work/hot-kini/surf.jpg", items: ["assets/work/hot-kini/label-cowgirl.png", "assets/work/hot-kini/label-golden.png", "assets/work/hot-kini/label-summer.png"] },
+      { type: "image", image: "assets/work/hot-kini/grid.jpg", narrow: "74%" },
+      { type: "image", image: "assets/work/hot-kini/landing.jpg", narrow: "92%" },
+      { type: "image", image: "assets/work/hot-kini/stories.jpg" },
+      { type: "image", image: "assets/work/hot-kini/pair.jpg" },
+      { type: "bleed", image: "assets/work/hot-kini/band.jpg" }
     ]
   },
   {
