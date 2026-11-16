@@ -858,12 +858,6 @@ body.is-loading { overflow: hidden; }
 .cs-narrow img { border-radius: 0; }
 @media (max-width: 768px) { .cs-narrow { width: 100% !important; } }
 
-/* a cover with a phone version (mobileImage / mobileRatio in projects.js) */
-.work-media picture { display: block; width: 100%; height: 100%; }
-@media (max-width: 768px) {
-  .work-media[style*="--m-ratio"] { aspect-ratio: var(--m-ratio) !important; }
-}
-
 /* ---------- GRECK case, carried over from the portfolio ----------
    Runs on the GRECK site's paper (bg in projects.js). Sizes are cqw off the
    1920 Figma frame, so each block scales with the page width. */
@@ -950,3 +944,78 @@ body.is-loading { overflow: hidden; }
   .cs-phones .ph-dots { width: 80cqw; margin-top: 12cqw; }
   .cs-site .st-view { width: 100cqw; }
 }
+
+/* ---------- "Reserve your spot" pill (window.BOOKING) ----------
+   Takes the place of the header's Contact link, top right. It sits outside the
+   header, which inverts its colours (mix-blend-mode), so it keeps its own white;
+   main.js gives the header a --booking-w gap so Studio stays clear of it. */
+.booking {
+  position: fixed; z-index: 99;
+  top: calc(var(--gutter) + var(--fs-logo) * 0.44); right: var(--gutter);
+  display: flex; align-items: center; gap: 12px;
+  padding: 6px 22px 6px 6px;
+  background: #fff; color: #000;
+  border: 1px solid #e4e4e1; border-radius: 999px;
+  transform: translateY(-50%);
+  transition: transform 0.45s var(--ease), border-color 0.3s ease, box-shadow 0.45s var(--ease);
+  animation: booking-in 0.9s var(--ease) 0.2s backwards; /* backwards, so hover can still move it afterwards */
+}
+body.is-loading .booking { animation-play-state: paused; }
+.booking:hover {
+  transform: translateY(calc(-50% - 2px)) scale(1.03);
+  border-color: #c9c9c5; box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+.booking[aria-current="page"] { border-color: #c9c9c5; }
+.booking-icon {
+  position: relative; flex: none; display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 50%; background: #e8e8e4;
+}
+/* a soft ring that leaves the icon every few seconds, with the bolt flashing */
+.booking-icon::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid #000; opacity: 0;
+  animation: booking-ring 4s ease-out 1.6s infinite;
+}
+.booking-icon svg { animation: booking-flash 4s ease-in-out 1.6s infinite; }
+.booking:hover .booking-icon svg { animation: booking-zap 0.5s ease-in-out; }
+.booking-text { display: flex; flex-direction: column; line-height: 1.2; white-space: nowrap; }
+.booking-title { font-size: 17px; font-weight: 500; letter-spacing: -0.01em; }
+.booking-note { font-size: 13px; color: var(--muted-2); }
+
+@keyframes booking-in {
+  from { opacity: 0; transform: translateY(calc(-50% - 14px)) scale(0.94); }
+  to   { opacity: 1; transform: translateY(-50%); }
+}
+@keyframes booking-ring {
+  0%   { opacity: 0.35; transform: scale(1); }
+  30%  { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+@keyframes booking-flash {
+  0%, 14%, 100% { opacity: 1; transform: none; }
+  4%  { opacity: 0.25; transform: scale(0.85); }
+  8%  { opacity: 1; transform: scale(1.15) rotate(-8deg); }
+}
+@keyframes booking-zap {
+  0%, 100% { transform: none; }
+  25% { transform: rotate(-14deg) scale(1.15); }
+  50% { transform: rotate(10deg) scale(1.15); }
+  75% { transform: rotate(-6deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking, .booking-icon::after, .booking-icon svg, .booking:hover .booking-icon svg { animation: none; }
+  .booking:hover { transform: translateY(-50%); }
+}
+@media (max-width: 720px) {
+  .booking { gap: 8px; padding: 4px 14px 4px 4px; }
+  .booking-icon { width: 30px; height: 30px; }
+  .booking-icon svg { width: 12px; height: 12px; }
+  .booking-title { font-size: 13px; }
+  .booking-note { font-size: 11px; }
+}
+@media (max-width: 370px) {
+  .booking { padding-left: 12px; }
+  .booking-icon { display: none; }
+}
+/* room for the pill at the end of the header row */
+.has-booking .header-right { padding-right: calc(var(--booking-w, 0px) + 1.1em); }

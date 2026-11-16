@@ -43,7 +43,7 @@
     { type: "note", label, body, foot } small mono label beside a paragraph
     { type: "site", w, h, items: [[file, page height at w wide], ...] } desktop window playing through the pages
   bleed and tags take hi: [1x width, @2x width] to serve the @2x file on big screens.
-  bg sets the page colour; mobileImage / mobileRatio give the cover a phone version.
+  bg sets the page colour.
   Leave blocks out to see the full layout as blank slots.
 
   EXAMPLE
@@ -144,7 +144,6 @@ window.PROJECTS = [
     id: "greck", title: "GRECK", tags: ["E-commerce", "Marketing"],
     summary: "One of one, every time.",
     image: "assets/work/greck/greck-cover.jpg", ratio: "1800 / 1012",
-    mobileImage: "assets/work/greck/greck-cover-mobile.jpg", mobileRatio: "1200 / 1950",
     tagline: "One of one, every time.",
     client: "GRECK",
     year: "2026",
@@ -309,6 +308,12 @@ window.STUDIO = [
   shade : optional, true darkens the photo more so white text reads on bright images
   items : shown as the small line at the bottom of each panel
 */
+/*
+  BOOKING — the "Reserve your spot" pill at the top of every page (links to the
+  contact form). Change `note` each month; set show: false to hide it.
+*/
+window.BOOKING = { show: true, title: "Reserve your spot", note: "3 slots left for January" };
+
 window.CAPABILITIES = [
   {
     title: "Brand & Design",

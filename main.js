@@ -5,6 +5,28 @@
   const filterList = document.getElementById("filter-list");
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  /* ---------- "Reserve your spot" pill (window.BOOKING in projects.js) ----------
+     Takes the place of the header's Contact link. It sits outside the header, which
+     inverts its colours (mix-blend-mode), so the pill keeps its own white. */
+  const booking = window.BOOKING;
+  const contactLink = document.querySelector(".header-contact");
+  if (booking && booking.show && contactLink) {
+    const here = contactLink.getAttribute("aria-current") === "page";
+    contactLink.hidden = true;
+    document.querySelector(".header").insertAdjacentHTML("afterend", `
+      <a class="booking" href="/contact"${here ? ' aria-current="page"' : ""}>
+        <span class="booking-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M13.5 2 4.5 13.5h6L9.5 22l9-11.5h-6z" fill="currentColor"/></svg></span>
+        <span class="booking-text"><span class="booking-title">${esc(booking.title)}</span><span class="booking-note">${esc(booking.note)}</span></span>
+      </a>`);
+    const pill = document.querySelector(".booking");
+    // keep Studio clear of the pill, whatever its width at this screen size
+    const fit = () => document.documentElement.style.setProperty("--booking-w", pill.offsetWidth + "px");
+    document.body.classList.add("has-booking");
+    fit();
+    addEventListener("resize", fit);
+    if (document.fonts) document.fonts.ready.then(fit);
+  }
+
   /* ---------- Clean addresses ----------
      GitHub Pages serves /studio for studio.html, so old .html links are tidied in the
      address bar, and in-page links (#top, #work, …) scroll without leaving a #part. */
@@ -39,14 +61,12 @@
         media = `<video src="${esc(p.video)}" data-lazy muted loop playsinline preload="none" ${p.image ? `poster="${esc(p.image)}"` : ""}></video>`;
       } else if (p.image) {
         media = `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`;
-        // a phone version of the cover, with its own shape (mobileRatio)
-        if (p.mobileImage) media = `<picture><source media="(max-width: 768px)" srcset="${esc(p.mobileImage)}">${media}</picture>`;
       } else {
         media = `<div class="work-placeholder"><span>${esc(p.title)}</span></div>`;
       }
       return `
         <article class="work-card reveal" id="work-${esc(p.id)}" data-tags="${esc(p.tags.join("|"))}">
-          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}${p.mobileRatio ? `;--m-ratio:${esc(p.mobileRatio)}` : ""}">${media}${p.mark ? `<img class="work-mark" src="${esc(p.mark)}" alt="" aria-hidden="true"${p.markW ? ` style="width:${esc(p.markW)};height:auto"` : ""}>` : ""}</a>
+          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}">${media}${p.mark ? `<img class="work-mark" src="${esc(p.mark)}" alt="" aria-hidden="true"${p.markW ? ` style="width:${esc(p.markW)};height:auto"` : ""}>` : ""}</a>
           <div class="work-info">
             <h3 class="work-card-title"><a href="${url}">${esc(p.title)}</a></h3>
             ${p.summary ? `<p class="work-card-summary">${esc(p.summary)}</p>` : ""}
