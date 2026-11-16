@@ -14,6 +14,7 @@
   }
 
   document.title = `${p.title} — Howell'n`;
+  if (p.bg) document.body.style.setProperty("--bg", p.bg); // page colour, e.g. GRECK's paper
 
   /* Used when a project has no blocks yet: shows the full layout as blank slots. */
   const DEFAULT_BLOCKS = [
@@ -47,6 +48,9 @@
     if (!b.title && !b.label) return "";
     return `<figcaption class="p-caption"><span>${esc(b.title || "")}</span><span class="p-caption-label">${esc(b.label || "")}</span></figcaption>`;
   }
+
+  // srcset tail for a file with an @2x copy: hi is [1x width, @2x width]; big screens pull the @2x
+  const hi = (src, w, sizes) => w ? ` srcset="${esc(src)} ${w[0]}w, ${esc(src.replace(/\.jpg$/, "@2x.jpg"))} ${w[1]}w" sizes="${sizes}"` : "";
 
   /* ---------- Blocks ---------- */
   const render = {
@@ -89,7 +93,7 @@
       </section>`,
 
     /* Case-study blocks, matching the portfolio case layout (see projects.js) */
-    bleed: (b) => `<figure class="cs-bleed"><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></figure>`,
+    bleed: (b) => `<figure class="cs-bleed"><img src="${esc(b.image)}"${hi(b.image, b.hi, "100vw")} alt="${esc(p.title)}" loading="lazy"></figure>`,
 
     image: (b) => `<figure class="cs-full${b.narrow ? " cs-narrow" : ""}"${b.narrow ? ` style="width:${esc(b.narrow)};margin-left:auto;margin-right:auto"` : ""}><img src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy"></figure>`,
 
@@ -98,6 +102,39 @@
         <img class="bt-bg" src="${esc(b.image)}" alt="${esc(p.title)}" loading="lazy">
         <div class="bt-labels">${(b.items || []).map((s, i) => `<img src="${esc(s)}" alt="${i === 0 ? esc(p.title) + " hot sauce bottle" : ""}"${i === 0 ? ' class="is-on"' : ' aria-hidden="true"'} loading="lazy">`).join("")}</div>
       </div>`,
+
+    // GRECK: mobile pages in a row that drifts left (runPhones below); each page scrolls
+    // inside its phone. Items are [file, page height at 390 wide]
+    phones: (b) => {
+      const row = (b.items || []).map(([src, h], j) => `<div class="ph"><img src="${esc(src)}" alt="" loading="lazy" style="--end:${((844 / h - 1) * 100).toFixed(3)}%;--d:${Math.round(h / 844 * 4.5)}s;--dl:-${(j * 1.7).toFixed(1)}s"></div>`).join("");
+      return `<div class="cs-phones"><div class="ph-run" aria-label="${esc(p.title)} mobile pages"><div class="ph-track">${row}${row}</div></div>
+        ${b.dots ? `<img class="ph-dots" src="${esc(b.dots)}" alt="" loading="lazy">` : ""}</div>`;
+    },
+
+    // GRECK: words and painted dots running left, paused on hover
+    ticker: (b) => {
+      const words = b.words || [];
+      let run = "";
+      for (let k = 0; k < 4; k++) words.forEach((w, j) => {
+        run += `<span>${esc(w)}</span><img src="${esc(b.dots)}${(k * words.length + j) % 6 + 1}.svg" alt="">`;
+      });
+      return `<div class="cs-ticker"><div class="gk-ticker" aria-hidden="true"><div class="gk-track">${run}${run}</div></div></div>`;
+    },
+
+    // GRECK: hang tags that drop onto the pile one after another when scrolled to.
+    // Items are [file, x, y, width] in the Figma frame's own pixels
+    tags: (b) => `<div class="cs-tags" style="aspect-ratio:${b.w} / ${b.h}">
+        <img class="tg-bg" src="${esc(b.bg)}"${hi(b.bg, b.hi, "100vw")} alt="${esc(p.title)}" loading="lazy">
+        ${(b.items || []).map(([src, x, y, w], j) => `<img class="tg" src="${esc(src)}" alt="" loading="lazy" style="left:${(x / b.w * 100).toFixed(3)}%;top:${(y / b.h * 100).toFixed(3)}%;width:${(w / b.w * 100).toFixed(3)}%;--i:${j};--r:${j % 2 ? 9 : -11}deg">`).join("")}
+      </div>`,
+
+    note: (b) => `<div class="cs-note"><span class="nt-label">${esc(b.label)}</span>
+        <div class="nt-main"><p>${esc(b.body)}</p>${b.foot ? `<span class="nt-foot">${esc(b.foot)}</span>` : ""}</div></div>`,
+
+    // GRECK: a desktop window that scrolls each page top to bottom, then moves on to the
+    // next (runSite below). Items are [file, page height at w wide]
+    site: (b) => `<div class="cs-site"><div class="st-view" style="aspect-ratio:${b.w} / ${b.h}">${(b.items || []).map(([src, h], j) =>
+        `<img src="${esc(src)}" alt="${j ? "" : esc(p.title) + " website"}" loading="lazy" data-end="${((b.h / h - 1) * 100).toFixed(3)}" data-dur="${Math.max(4, Math.round((h - b.h) / 260))}"${j ? "" : ' class="is-on"'}>`).join("")}</div></div>`,
 
     pair: (b) => `<div class="cs-pair">${(b.items || []).map((s) => `<figure><img src="${esc(s)}" alt="${esc(p.title)}" loading="lazy"></figure>`).join("")}</div>`,
 
@@ -284,6 +321,77 @@
   };
   document.addEventListener("pointerup", release);
   document.addEventListener("pointercancel", release);
+
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- GRECK phone row: drifts left on its own and can be swiped or dragged
+     sideways. Vertical swipes are left to the page (touch-action: pan-y), so the
+     pages inside the phones only ever scroll by themselves ---------- */
+  root.querySelectorAll(".ph-run").forEach((run) => {
+    const track = run.querySelector(".ph-track");
+    const speed = reduceMotion ? 0 : 1 / 100; // half the track per 100s
+    let x = 0, v = 0, grab = null, hover = false, last = 0;
+    const halfW = () => track.scrollWidth / 2;
+    const wrap = () => { const h = halfW(); if (h) { x %= h; if (x > 0) x -= h; } };
+    const frame = (t) => {
+      const dt = last ? Math.min(t - last, 64) / 1000 : 0;
+      last = t;
+      if (!grab) {
+        if (Math.abs(v) > 0.02) { x += v * dt * 60; v *= Math.pow(0.92, dt * 60); }
+        else if (!hover) x -= halfW() * speed * dt;
+      }
+      wrap();
+      track.style.transform = `translate3d(${x}px,0,0)`;
+      requestAnimationFrame(frame);
+    };
+    run.addEventListener("pointerdown", (e) => {
+      grab = { id: e.pointerId, x: e.clientX, moved: false, lastX: e.clientX, lastT: e.timeStamp };
+      v = 0;
+    });
+    run.addEventListener("pointermove", (e) => {
+      if (!grab || e.pointerId !== grab.id) return;
+      const dx = e.clientX - grab.lastX;
+      if (!grab.moved && Math.abs(e.clientX - grab.x) > 6) { grab.moved = true; try { run.setPointerCapture(e.pointerId); } catch (_) {} }
+      if (!grab.moved) return;
+      x += dx;
+      v = dx / Math.max(e.timeStamp - grab.lastT, 1) * 16;
+      grab.lastX = e.clientX; grab.lastT = e.timeStamp;
+    });
+    run.addEventListener("pointerup", (e) => { if (grab && e.pointerId === grab.id) grab = null; });
+    run.addEventListener("pointercancel", (e) => { if (grab && e.pointerId === grab.id) { grab = null; v = 0; } });
+    run.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") hover = true; });
+    run.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") hover = false; });
+    run.addEventListener("dragstart", (e) => e.preventDefault());
+    requestAnimationFrame(frame);
+  });
+
+  /* ---------- GRECK tags: stack once their block is properly in view ---------- */
+  const tio = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("is-in"); tio.unobserve(e.target); }
+  }), { threshold: 0.35 });
+  root.querySelectorAll(".cs-tags").forEach((el) => tio.observe(el));
+
+  /* ---------- GRECK website: page 1 scrolls down, holds, fades to page 2, and so on ---------- */
+  const runSite = (view) => {
+    const imgs = view.querySelectorAll("img");
+    let i = 0;
+    const step = () => {
+      const img = imgs[i], dur = +img.dataset.dur;
+      imgs.forEach((im) => im.classList.toggle("is-on", im === img));
+      img.style.transition = "none";
+      img.style.transform = "translateY(0)";
+      setTimeout(() => {
+        img.style.transition = `transform ${dur}s cubic-bezier(.45,0,.55,1)`;
+        img.style.transform = `translateY(${img.dataset.end}%)`;
+        setTimeout(() => { i = (i + 1) % imgs.length; step(); }, dur * 1000 + 1800);
+      }, 1600);
+    };
+    step();
+  };
+  const sio = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { sio.unobserve(e.target); if (!reduceMotion) runSite(e.target); }
+  }), { threshold: 0.3 });
+  root.querySelectorAll(".st-view").forEach((el) => sio.observe(el));
 
   /* ---------- Bottle labels: blink to the next flavour; the one it replaces stays
      solid underneath so the outline never flickers ---------- */

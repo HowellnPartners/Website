@@ -39,12 +39,14 @@
         media = `<video src="${esc(p.video)}" data-lazy muted loop playsinline preload="none" ${p.image ? `poster="${esc(p.image)}"` : ""}></video>`;
       } else if (p.image) {
         media = `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`;
+        // a phone version of the cover, with its own shape (mobileRatio)
+        if (p.mobileImage) media = `<picture><source media="(max-width: 768px)" srcset="${esc(p.mobileImage)}">${media}</picture>`;
       } else {
         media = `<div class="work-placeholder"><span>${esc(p.title)}</span></div>`;
       }
       return `
         <article class="work-card reveal" id="work-${esc(p.id)}" data-tags="${esc(p.tags.join("|"))}">
-          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}">${media}${p.mark ? `<img class="work-mark" src="${esc(p.mark)}" alt="" aria-hidden="true"${p.markW ? ` style="width:${esc(p.markW)};height:auto"` : ""}>` : ""}</a>
+          <a class="work-media${p.image || p.video ? "" : " is-blank"}" href="${url}" style="aspect-ratio:${esc(p.ratio || "16 / 9")}${p.mobileRatio ? `;--m-ratio:${esc(p.mobileRatio)}` : ""}">${media}${p.mark ? `<img class="work-mark" src="${esc(p.mark)}" alt="" aria-hidden="true"${p.markW ? ` style="width:${esc(p.markW)};height:auto"` : ""}>` : ""}</a>
           <div class="work-info">
             <h3 class="work-card-title"><a href="${url}">${esc(p.title)}</a></h3>
             ${p.summary ? `<p class="work-card-summary">${esc(p.summary)}</p>` : ""}

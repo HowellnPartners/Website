@@ -35,6 +35,15 @@
   Case "image" blocks take narrow: "74%" for a board that sits inside the Figma frame's margins.
   { type: "bottle", image: "photo.jpg", items: ["flavour-1.png", ...] } lays the bottle over the
   photo and blinks through the flavours (each PNG is the whole bottle, same size and place).
+  GRECK blocks (all sized off the 1920 Figma frame):
+    { type: "phones", items: [[file, page height at 390 wide], ...], dots } row of phones that drifts and
+      can be dragged sideways; each page scrolls inside its phone
+    { type: "ticker", words: ["Word", ...], dots: "path/greck-dot-" } strip of words and painted dots (-1.svg to -6.svg)
+    { type: "tags", bg, w, h, items: [[file, x, y, width], ...] } hang tags that drop onto a pile in view
+    { type: "note", label, body, foot } small mono label beside a paragraph
+    { type: "site", w, h, items: [[file, page height at w wide], ...] } desktop window playing through the pages
+  bleed and tags take hi: [1x width, @2x width] to serve the @2x file on big screens.
+  bg sets the page colour; mobileImage / mobileRatio give the cover a phone version.
   Leave blocks out to see the full layout as blank slots.
 
   EXAMPLE
@@ -130,6 +139,38 @@ window.PROJECTS = [
         ] }
     ],
     overview: ["MADRUN turns recovery into part of the performance. A high-impact identity designed to stand out in the gym, on the shelf, and everywhere in between."]
+  },
+  {
+    id: "greck", title: "GRECK", tags: ["E-commerce", "Marketing"],
+    summary: "One of one, every time.",
+    image: "assets/work/greck/greck-cover.jpg", ratio: "1800 / 1012",
+    mobileImage: "assets/work/greck/greck-cover-mobile.jpg", mobileRatio: "1200 / 1950",
+    tagline: "One of one, every time.",
+    client: "GRECK",
+    year: "2026",
+    // Same layout as the GRECK case on brookerogersdesign.com, on the GRECK site's paper
+    layout: "case", hero: false, square: true, bg: "#FBF9F5",
+    blocks: [
+      { type: "bleed", image: "assets/work/greck/greck-hero.jpg", hi: [1800, 2880] },
+      { type: "phones", dots: "assets/work/greck/greck-dots.png", items: [
+          ["assets/work/greck/greck-m1.jpg", 7765], ["assets/work/greck/greck-m2.jpg", 8308], ["assets/work/greck/greck-m3.jpg", 3167],
+          ["assets/work/greck/greck-m4.jpg", 2695], ["assets/work/greck/greck-m5.jpg", 2455], ["assets/work/greck/greck-m6.jpg", 2635],
+          ["assets/work/greck/greck-m7.jpg", 2662]] },
+      { type: "bleed", image: "assets/work/greck/greck-card.jpg", hi: [1800, 2880] },
+      { type: "ticker", words: ["Color", "Bugs", "Dots"], dots: "assets/work/greck/greck-dot-" },
+      { type: "bleed", image: "assets/work/greck/greck-brown.jpg", hi: [1800, 2880] },
+      { type: "bleed", image: "assets/work/greck/greck-shop.jpg", hi: [1800, 2880] },
+      { type: "tags", bg: "assets/work/greck/greck-collage-bg.jpg", hi: [1800, 2880], w: 1920, h: 1340, items: [
+          ["assets/work/greck/greck-tag1.png", 341.95, 349.42, 365.63], ["assets/work/greck/greck-tag2.png", 447.43, 655, 358.66],
+          ["assets/work/greck/greck-tag3.png", 515.74, 0, 350.05], ["assets/work/greck/greck-tag4.png", 127.67, 77.35, 340.2],
+          ["assets/work/greck/greck-tag5.png", 93, 695.12, 371.53]] },
+      { type: "note", label: "Her practice", body: "Her practice is rooted in instinct. Some ideas begin with a single mark, others with a memory, a color, or a character waiting to come to life. What follows is an exploration of the familiar made unfamiliar, where imperfections are welcomed and no two pieces tell quite the same story.", foot: "A little playful. A little peculiar. Entirely GRECK." },
+      { type: "bleed", image: "assets/work/greck/greck-bag.jpg", hi: [1800, 2880] },
+      { type: "site", w: 1440, h: 1081, items: [
+          ["assets/work/greck/greck-web1.jpg", 7748], ["assets/work/greck/greck-web2.jpg", 2891], ["assets/work/greck/greck-web3.jpg", 4820],
+          ["assets/work/greck/greck-web4.jpg", 7647], ["assets/work/greck/greck-web5.jpg", 1963]] },
+      { type: "bleed", image: "assets/work/greck/greck-pattern.jpg", hi: [1800, 2880] }
+    ]
   },
   {
     id: "blank", title: "BLANK", tags: ["Branding", "Positioning", "Web Design"],
