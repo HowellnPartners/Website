@@ -219,7 +219,8 @@ window.PROJECTS = [
       { type: "image", image: "assets/work/dazzling-doggie-duvet/07-website.jpg" },
       { type: "bleed", image: "assets/work/dazzling-doggie-duvet/08-pillow.jpg?v=2" },
       { type: "image", image: "assets/work/dazzling-doggie-duvet/09-cards.jpg?v=2" },
-      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/10-trio.jpg?v=2" }
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/10-trio.jpg?v=2" },
+      { type: "bleed", image: "assets/work/dazzling-doggie-duvet/11-closing.jpg" }
     ]
   },
   {
